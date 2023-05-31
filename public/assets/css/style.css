@@ -1,0 +1,61 @@
+body {
+    background-color: #070717;
+    color: white;
+    min-height: 100vh;
+}
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+/*
+  *
+  * ==========================================
+  * FOR DEMO PURPOSE
+  * ==========================================
+  *
+  */
+
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.shade {
+    background-color: #013d7d  !important;
+    border-radius: 40px !important
+
+}
+
+.footer-menus {
+    padding-left: 0px;
+}
+
+.footer-menus li{
+    list-style: none;
+}
+
+.header-nav{
+    text-decoration: none;
+    color:white;
+}
+
+.header-nav li {
+    background-color: #013d7d;
+}
