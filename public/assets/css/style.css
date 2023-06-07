@@ -1,17 +1,9 @@
 body {
-    background-color: #070717;
-    color: white;
+    background-color: #090B1A;
+    color: #FEFEFF;
     min-height: 100vh;
 }
-
-/*
-*
-* ==========================================
-* CUSTOM UTIL CLASSES
-* ==========================================
-*
-*/
-
+  
 .form-control:focus {
     box-shadow: none;
 }
@@ -23,32 +15,149 @@ body {
     padding-left: 0;
 }
 
-/*
-  *
-  * ==========================================
-  * FOR DEMO PURPOSE
-  * ==========================================
-  *
-  */
-
 .form-control::placeholder {
     font-size: 0.95rem;
-    color: #aaa;
+    color: #FEFEFF;
     font-style: italic;
 }
 
+/* Button Effect */
+
+.orange {
+    background-color: #EC9206;
+    color: black;
+}
+
 .shade {
-    background-color: #013d7d  !important;
+    background-color:#171C3C  !important;
     border-radius: 40px !important
 
 }
 
-.footer-menus {
+.customeMenus{
+    background-color: #171C3C;
+    height: 230px;
+    border-radius: 7px;
+    font-family: 'Gilroy', sans-serif;
+}
+
+.customeMenus:hover {
+    box-shadow: 0px 5px 10px 0px rgba(187, 161, 13, 0.7);
+}
+
+.customeMenus span{
+    font-weight: 900;
+    font-size: 36px;
+    padding-top: 86px;
+}
+
+.CustomText{
+    font-size: 142px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 6px;
+    color: #232230;
+}
+
+.portfolioMenus{
+    display: flex;
+    justify-content: center;
+}
+
+.portfolioMenus .row {
+    width: 85%;
+}
+
+.portfolioMenus button {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.colCentered {
+    color: #FEFEFF;
+}
+
+.portfolioMenus button .active {
+    background-color: #6280FA;
+    border-radius: 9px;
+}
+
+.colCentered:hover {
+    background-color: #6280FA;
+    border-radius: 9px;
+}
+
+/* Grid Section Start */
+
+.gridMainSection {
+    height: auto; 
+    padding: 10px;
+}
+
+.gridMainSection .row {
+    padding: 10px;
+}
+
+.gridMainSection .row .col{
+    background-color: #171C3C;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.gridMainSection .row .col{
+    box-shadow: 0px 5px 10px 0px rgba(11, 50, 166, 0.7);
+}
+
+.gridMainSection .row .col:hover{
+    box-shadow: 0px 5px 10px 0px rgba(187, 161, 13, 0.7);
+}
+/* Grid Section End */
+
+/* Projects Section Start */
+
+
+.projectsLogos {
+    height: 177px;
+    background-color: #171C3C;
+    width: 100%;
+    border-radius: 9px;
+    text-align: center;
+    color: white;
+}
+
+.projectsLogos img{
+    padding: 20px;
+}
+
+.projectsLogos:hover{
+    box-shadow: 0px 5px 10px 0px rgba(13, 138, 187, 0.7);
+}
+/* Projects Section End- */
+
+
+
+.footer {
+    margin-top: 100px;
+}
+
+.footerMenus {
     padding-left: 0px;
 }
 
-.footer-menus li{
+.footerMenus li{
     list-style: none;
+}
+
+.footerMenus a {
+    color: #FEFEFF;
 }
 
 .header-nav{
@@ -58,4 +167,8 @@ body {
 
 .header-nav li {
     background-color: #013d7d;
+}
+
+footer { padding-top: 40px; 
+    /* position: relative;  */
 }

@@ -15,6 +15,8 @@
       <link rel='stylesheet' href='{{ URL::asset('assets/css/style.css') }}'/>
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="{{ URL::asset('assets/css/responsive.css') }}"/>
+      <!-- Google Fonts -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gilroy">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
    </head>

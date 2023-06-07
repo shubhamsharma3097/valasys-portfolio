@@ -1,6 +1,6 @@
 <!-- Footer Start -->
 <footer class="page-footer font-small mdb-color darken-3 pt-4">
-   <div class="container">
+   <div class="container footer">
       <div class="row">
          <div class="col-lg-5 col-md-6 col-sm-12 pr-lg-5">
             <div class="widget">
@@ -20,7 +20,7 @@
             <div class="widget">
                <h4 class="footer-title">Useful links</h4>
                <div class="menu-link">
-                  <ul id="menu-link-menu" class="menu footer-menus">
+                  <ul id="menu-link-menu" class="menu footerMenus">
                      <li> <a href="index.html">Projects</a></li>
                      <li><a href="aboutus.html">Categories</a></li>
                      <li><a href="faq.html">Portfolio</a></li>
@@ -33,7 +33,7 @@
                <h4 class="footer-title ">Contact Us</h4>
                <div class="row">
                   <div class="col-sm-12">
-                     <ul class="iq-contact footer-menus">
+                     <ul class="iq-contact footerMenus">
                         <li>
                            <a><i class="fa fa-home text-warning" aria-hidden="true"></i><span> 1234 North Avenue Luke Lane, South Bend, IN 360001</span></a>
                         </li>
