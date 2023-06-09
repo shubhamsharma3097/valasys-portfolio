@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 
-Route::post('search', [HomeController::class, 'search']);
+Route::get('ajaxRequest', [HomeController::class, 'ajaxRequest']);
+Route::post('ajaxRequest', [HomeController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');

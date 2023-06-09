@@ -129,9 +129,15 @@
 @push('js')
     <script type="text/javascript">
 
-        // $(document).ready(function () {
-        //     alert();
-        // });
+        $(document).ready(function () {
+            getSelectedGridData();
+        });
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
         var header = document.getElementById("portfolioMenusID");
         var btns = header.getElementsByClassName("colCentered");
@@ -145,12 +151,29 @@
         }
 
         function getSelectedGridData(value){
+            var searchData = null;
             if(value===undefined){
                 var searchData = $('#search').val();
                 console.warn("VAL ",searchData);
             }else{
                 console.warn("VALUE ",value);
+                var searchData = value;
             }
+            var url = "{{ url('search') }}";
+            $.ajax({
+                type:'POST',
+                url:"{{ route('ajaxRequest.post') }}",
+                data:{searchData:searchData},
+                beforeSend: function(){
+                },
+                complete: function(){
+                },
+                success: function(response){
+                    console.warn(response);
+                }
+            });
+
+
         }
 
     </script>
