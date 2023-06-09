@@ -56,7 +56,7 @@
  <!-- Footer End -->
  <!-- === back-to-top === -->
  <div id="back-to-top">
-    <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>
+    <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up">NOT WORKING YET</i> </a>
  </div>
  <!-- === back-to-top End === -->
  <!-- jQuery first, then Popper.js, then Bootstrap JS -->

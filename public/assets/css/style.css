@@ -3,7 +3,27 @@ body {
     color: #FEFEFF;
     min-height: 100vh;
 }
-  
+
+.navbar {
+    overflow: hidden;
+    background-color: #090B1A;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 999;
+}
+
+.searchDiv {
+    justify-content: center;
+    margin-top: 100px;
+}
+
+
+
+.logIn_li {
+    font-size: 12px;
+}
+
 .form-control:focus {
     box-shadow: none;
 }
@@ -39,10 +59,11 @@ body {
     height: 230px;
     border-radius: 7px;
     font-family: 'Gilroy', sans-serif;
+    margin-bottom: 15px;
 }
 
 .customeMenus:hover {
-    box-shadow: 0px 5px 10px 0px rgba(187, 161, 13, 0.7);
+    box-shadow: 0px 5px 10px 0px rgba(234, 128, 16, 0.7);
 }
 
 .customeMenus span{
@@ -110,19 +131,15 @@ body {
     background-color: #171C3C;
     border-radius: 10px;
     text-align: center;
-}
-
-.gridMainSection .row .col{
-    box-shadow: 0px 5px 10px 0px rgba(11, 50, 166, 0.7);
+    padding: 5px;
 }
 
 .gridMainSection .row .col:hover{
-    box-shadow: 0px 5px 10px 0px rgba(187, 161, 13, 0.7);
+    box-shadow: 0px 5px 10px 0px rgba(234, 128, 16, 0.7);
 }
 /* Grid Section End */
 
 /* Projects Section Start */
-
 
 .projectsLogos {
     height: 177px;
@@ -138,7 +155,7 @@ body {
 }
 
 .projectsLogos:hover{
-    box-shadow: 0px 5px 10px 0px rgba(13, 138, 187, 0.7);
+    box-shadow: 0px 5px 10px 0px rgba(215, 210, 210, 0.7);
 }
 /* Projects Section End- */
 
