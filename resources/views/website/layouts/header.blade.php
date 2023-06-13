@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="form-group col-md-2 mt-3">
-                    <button type="button" class="btn rounded-pill btn-block shadow-sm orange" onclick="getSelectedGridData()">Search</button>
+                    <button type="button" class="btn rounded-pill btn-block shadow-sm orange" onclick="getGridData()">Search</button>
                 </div>
             </div>
         </form>

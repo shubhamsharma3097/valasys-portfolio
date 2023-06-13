@@ -18,6 +18,4 @@ Route::get('/', function () {
     return view('website.home');
 });
 
-
-Route::get('ajaxRequest', [HomeController::class, 'ajaxRequest']);
-Route::post('ajaxRequest', [HomeController::class, 'ajaxRequestPost'])->name('ajaxRequest.post');
+Route::post('ajaxRequest', [HomeController::class, 'ajaxRequest'])->name('ajaxRequest');

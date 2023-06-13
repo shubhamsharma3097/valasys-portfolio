@@ -18,8 +18,6 @@ body {
     margin-top: 100px;
 }
 
-
-
 .logIn_li {
     font-size: 12px;
 }
@@ -137,6 +135,24 @@ body {
 .gridMainSection .row .col:hover{
     box-shadow: 0px 5px 10px 0px rgba(234, 128, 16, 0.7);
 }
+
+.empty{
+    background-color: #e7e2da !important;
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 /* Grid Section End */
 
 /* Projects Section Start */

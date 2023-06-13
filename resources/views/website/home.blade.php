@@ -21,11 +21,11 @@
         </div>
         <div class="text-center portfolioMenus mb-3">
             <div class="row" id="portfolioMenusID">
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered active" id="all" style="width: 100%">All</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="graphic_design" style="width: 100%">Graphic Design</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="Social_media" style="width: 100%">Social Media</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="branding" style="width: 100%">Branding</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="website" style="width: 100%">Website</div></button></div>
+                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered active" id="all">All</div></button></div>
+                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="graphic_design">Graphic Design</div></button></div>
+                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="Social_media">Social Media</div></button></div>
+                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="branding">Branding</div></button></div>
+                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="website">Website</div></button></div>
             </div>
         </div>
 
@@ -33,48 +33,56 @@
         <div class="row gridMainSection"> 
             <div class="col-md-4">
                 <div class="row">
-                    <div class="col" style="height: 270px">
-                        <img src="{{ URL::asset('assets/images/blog/blog-3.jpg') }}" alt="blog" width="100%" height="100%">
+                    <div class="col item empty" style="height: 270px">
+                        <div class="image-container w-100 h-100">
+                        </div>
                         {{-- 1 --}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col" style="height: 230px">
-                        <img src="{{ URL::asset('assets/images/blog/blog-6.jpg') }}" alt="blog" width="100%" height="100%">
+                    <div class="col item empty" style="height: 230px">
+                        <div class="image-container w-100 h-100">
+                        </div>
                         {{-- 4 --}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col" style="height: 370px">
-                        <img src="{{ URL::asset('assets/images/blog/blog-1.jpg') }}" alt="blog" width="100%" height="100%">
+                    <div class="col item empty" style="height: 370px">
+                        <div class="image-container w-100 h-100">
+                        </div>
                         {{-- 6 --}}
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col" style="height: 270px;margin-right: 10px;">
-                        <img src="{{ URL::asset('assets/images/blog/blog-5.jpg') }}" alt="blog" width="100%" height="100%">
+                    <div class="col item empty" style="height: 270px;margin-right: 10px;">
+                        <div class="image-container w-100 h-100">
+                        </div>
                         {{-- 2 --}}
                     </div>
-                    <div class="col" style="height: 270px;margin-left: 10px;">
-                        <img src="{{ URL::asset('assets/images/blog/blog-4.jpg') }}" alt="blog" width="100%" height="100%">
+                    <div class="col item empty" style="height: 270px;margin-left: 10px;">
+                        <div class="image-container w-100 h-100">
+                        </div>
                         {{-- 3 --}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col text-center" style="height: 390px;">
-                        <img src="{{ URL::asset('assets/images/blog/blog-d2-1.jpg') }}" alt="blog" width="100%" height="100%">
+                    <div class="col text-center item empty" style="height: 390px;">
+                        <div class="image-container w-100 h-100">
+                        </div>
                         {{-- 5 --}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col" style="height: 210px;margin-right: 10px;">
-                        <img src="{{ URL::asset('assets/images/blog/blog-01.jpg') }}" alt="blog" width="100%" height="100%">
+                    <div class="col item empty" style="height: 210px;margin-right: 10px;">
+                        <div class="image-container w-100 h-100">
+                        </div>
                         {{-- 7 --}}
                     </div>
-                    <div class="col" style="height: 210px;margin-left: 10px;">
-                        <img src="{{ URL::asset('assets/images/blog/blog-02.jpg') }}" alt="blog" width="100%" height="100%">
+                    <div class="col item empty" style="height: 210px;margin-left: 10px;">
+                        <div class="image-container w-100 h-100">
+                        </div>
                         {{-- 8 --}}
                     </div>
                 </div>
@@ -130,7 +138,8 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            getSelectedGridData();
+            $('#search').val('');
+            getGridData();
         });
 
         $.ajaxSetup({
@@ -146,34 +155,60 @@
                 var current = document.getElementsByClassName("active");
                 current[0].className = current[0].className.replace(" active", "");
                 this.className += " active";
-                getSelectedGridData(this.id);
+                getGridData(this.id);
             });
         }
 
-        function getSelectedGridData(value){
-            var searchData = null;
+        function getGridData(value){
+            var filterData = null;
             if(value===undefined){
-                var searchData = $('#search').val();
-                console.warn("VAL ",searchData);
+                var filterData = $('#search').val().trim();
+                if(filterData == '' || filterData == null){
+                    filterData = 'all';
+                }
             }else{
-                console.warn("VALUE ",value);
-                var searchData = value;
+                filterData = value;
             }
+            console.warn(filterData);
             var url = "{{ url('search') }}";
             $.ajax({
                 type:'POST',
-                url:"{{ route('ajaxRequest.post') }}",
-                data:{searchData:searchData},
+                url:"{{ route('ajaxRequest') }}",
+                data:{filterData:filterData},
                 beforeSend: function(){
+                    document.querySelectorAll(".item").forEach((el, index) => {
+                        el.className = el.className.replace(" loaded", " empty");
+                        el.querySelector(".image-container").innerHTML = "";
+                        // el.querySelector("img").src = "";
+                        // el.querySelector("img").style = "display:none";
+                    });
                 },
                 complete: function(){
                 },
                 success: function(response){
-                    console.warn(response);
+                    if(response.result){
+                        setTimeout(() => {
+                            setImages(response.data);
+                        }, 1500);
+                    }else{
+                        console.warn(response.message);
+                    }
                 }
             });
+        }
 
-
+        function setImages(data){
+            console.warn("DATA ",data);
+            document.querySelectorAll(".item").forEach((el, index) => {
+                if (data[index]) {
+                    el.className = el.className.replace(" empty", " loaded");
+                    var image = `<a href="/"><img src="{{ URL::asset('assets/images/${data[index].image_src}')}}" width="100%" height="100%"/></a>`;
+                    el.querySelector(".image-container").innerHTML = image;
+                    // el.querySelector("img").src = src;
+                    // el.querySelector("img").style = "display:block";
+                    // el.querySelector(".text-container").innerHTML = data[index].description;
+                }
+            });
         }
 
     </script>
