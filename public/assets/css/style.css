@@ -157,7 +157,7 @@ body {
 
 /* Projects Section Start */
 
-.projectsLogos {
+.projectsLogos .col-md {
     height: 177px;
     background-color: #171C3C;
     width: 100%;
@@ -170,10 +170,52 @@ body {
     padding: 20px;
 }
 
-.projectsLogos:hover{
+.projectsLogos .col-md:hover{
+    box-shadow: 0px 5px 10px 0px rgba(215, 210, 210, 0.7);
+}
+
+.projectsImgs .col-md {
+    height: 240px;
+    background-color: #171C3C;
+    width: 100%;
+    border-radius: 9px;
+    /* text-align: center; */
+    color: white;
+}
+
+.projectsImgs .col-md img{
+    padding: 20px;
+}
+
+.projectsImgs .col-md:hover{
     box-shadow: 0px 5px 10px 0px rgba(215, 210, 210, 0.7);
 }
 /* Projects Section End- */
+
+/* Service Modal */
+
+.serviceModal {
+    background-color: #171C3C;
+    color: whitesmoke;
+}
+
+#myModal{
+    padding: 0px;
+}
+
+.carousel-control-prev {
+    left: -10px;
+    color: black;
+    width: 100px;
+}
+
+.carousel-control-next {
+    right: -20px;
+    color: black;
+    width: 100px;
+}
+
+/* Service Modal */
 
 
 

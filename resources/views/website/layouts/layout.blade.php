@@ -15,7 +15,7 @@
       <!-- Style CSS -->
       <link rel='stylesheet' href='{{ URL::asset('assets/css/style.css') }}'/>
       <!-- Responsive CSS -->
-      <link rel="stylesheet" href="{{ URL::asset('assets/css/responsive.css') }}"/>
+      {{-- <link rel="stylesheet" href="{{ URL::asset('assets/css/responsive.css') }}"/> --}}
       <!-- Google Fonts -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gilroy">
       <!-- Responsive CSS -->

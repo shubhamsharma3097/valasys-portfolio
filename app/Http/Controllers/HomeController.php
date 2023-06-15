@@ -5,79 +5,75 @@ namespace App\Http\Controllers;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Banners;
+use App\Models\Services;
 
 class HomeController extends Controller
 {
-    public function search(){
-
-        return $_POST;
-        // return view('website.dynamic_page');
-    }
-
     public function ajaxRequest(Request $request){
         try {
             $filterData = $request->input('filterData'); 
-            if(!empty($filterData)){
+            if(!empty($filterData)) {
                 if($filterData == 'all'){
-                    $allData = array();
-                    $highData = array();
+                    $data = array();
+                    $finalData = array();
                     $alltypes = ['website', 'branding', 'graphic_design', 'social_media'];
-                    foreach($alltypes as $row){
-                        $getdataForAll = DB::table('home_banners')
-                            ->select('image_src','title','descriptions','categories')
-                            ->where('categories',$row)
-                            ->where('status','Active')
-                            ->inRandomOrder()
-                            ->limit(2)
-                            ->get();
-                        if(count($getdataForAll)>0){
-                            foreach ($getdataForAll as $key => $val) {
-                                $highData['categories'] = $val->categories;
-                                $highData['descriptions'] = $val->descriptions;
-                                $highData['image_src'] = $val->image_src;
-                                $highData['title'] = $val->title;
-                                array_push($allData, $highData);
+                    $serviceData = Services::whereIn('type',$alltypes)->get();
+                    if(count($serviceData) > 0){
+                        foreach ($serviceData as $value) {
+                            if(!empty($value['service_img_id'])){
+                                $randIds = explode(',',$value['service_img_id']);
+                                $randomElement = array_rand(array_flip($randIds),2);
+                                $bannerData = Banners::whereIn('id',$randomElement)->get()->toArray();
+                                if(count($bannerData) > 0){
+                                    foreach ($bannerData as $row) {
+                                        $data['service_id'] =  $value->id;
+                                        $data['name'] =  $value->name;
+                                        $data['type'] =  $value->type;
+                                        $data['project_id'] =  $value->project_id;
+                                        $data['img_src'] =  $row['img_src'];
+                                        array_push($finalData, $data);
+                                    }
+                                }
                             }
                         }
-                    }
-                    if(count($allData) > 0){
-                        return response()->json(['result' => true ,'data' => $allData], 200);
-                    }else{
-                        return response()->json(['status' => 500, 'result' => false ,'data' =>'', 'message' => "NO RECORD FOUND"]);
+                        return response()->json(['result' => true, 'data' => $finalData], 200);
+                    } else {
+                        return response()->json(['status' => 500, 'result' => false, 'data' =>'', 'message' => "NO RECORD FOUND"]);
                     }
                 } else {
-                    $getHomeData = DB::table('home_banners')
-                        ->select('image_src','title','descriptions','categories')
-                        ->where('categories',$filterData)
-                        ->where('status','Active')
-                        ->get();
-                    if(count($getHomeData) > 0){
-                        return response()->json(['result' => true ,'data' => $getHomeData], 200);
+                    $getBanners = Banners:: where('name', $filterData)
+                                            ->where('img_status','Active')
+                                            ->inRandomOrder()
+                                            ->get();
+                    if(count($getBanners) > 0){
+                        return response()->json(['result' => true, 'data' => $getBanners], 200);
                     }else{
-                        return response()->json(['status' => 500, 'result' => false ,'data' =>'', 'message' => "NO RECORD FOUND"]);
+                        return response()->json(['status' => 500, 'result' => false, 'data' =>'', 'message' => "NO RECORD FOUND"]);
                     }
                 }
             }else{
-                return response()->json(['status' => 500, 'result' => false ,'data' =>'', 'message' => "Something Went Wrong"]);
+                return response()->json(['status' => 500, 'result' => false, 'data' =>'', 'message' => "Something Went Wrong"]);
             }
         } catch (QueryException $e) {
             if ($e->getCode() == 2002) {
-                return response()->json(['status' => 500, 'result' => false ,'data' =>'', 'message' => $e->getMessage()]);
+                return response()->json(['status' => 500, 'result' => false, 'data' =>'', 'message' => $e->getMessage()]);
             }
         }
     }
 
-    public function ajaxRequestPost(Request $request)
-    {
-        $input = $request->all();
-        $getHomeData = DB::table('home_banners')
-                            ->select('image_src','title','descriptions','categories')
-                            ->where('categories','all')
-                            ->where('status','Active')
-                            ->get();
-        print_r($getHomeData);
-     
-        // return response()->json(['success'=>'Got Simple Ajax Request.']);
+    // This function is basically used for getting all details for specific project, related project, and services. and render all data in modal 
+    public function specific_project_details(Request $request){
+        $post = "SHUBHAM";
+        $comments = "SHARMA";
+        $likesCount = "sfsdfsdf";
+        $html = view('website.details', compact('post', 'comments', 'likesCount'))->render();
+        return $html;
+    }
+    
+    // This function is basically used for getting all details for specific services, related services, and project. and render all data in modal 
+    public function specific_service_details(Request $request){
+        print_r("WORKING");
     }
 
 }

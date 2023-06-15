@@ -1,7 +1,7 @@
 <!-- Header -->
 <header id="main-header">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <img class="" src="{{ URL::asset('assets/images/valasys-logo.png') }}" alt="Logo-Image" style="width: 50%;">
             </a>
@@ -15,12 +15,17 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">
                     <li class="nav-item m-3">
-                        <a class="header-nav" href="/">
+                        <a class="header-nav" href=" {{ URL('/') }} ">
+                        Home
+                        </a>
+                    </li>
+                    <li class="nav-item m-3">
+                        <a class="header-nav" href=" {{ URL('/projects') }} ">
                         Projects
                         </a>
                     </li>
                     <li class="nav-item m-3">
-                        <a class="header-nav" href="/categories" role="button">
+                        <a class="header-nav" href=" {{ URL('/services') }} " role="button">
                         Categories
                         </a>
                     </li>
@@ -40,7 +45,7 @@
     </nav>  
 
     <!-- Search Bar Start -->
-    <div class="container">
+    <div class="container-fluid">
         <form name="search-form" id="search-form" method="post" action="{{ url('search') }}">
             @csrf
             <div class="row row mb-0 searchDiv">

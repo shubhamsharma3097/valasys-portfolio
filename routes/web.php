@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\ServicesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +21,12 @@ Route::get('/', function () {
 });
 
 Route::post('ajaxRequest', [HomeController::class, 'ajaxRequest'])->name('ajaxRequest');
+
+Route::get('projects', [ProjectsController::class, 'index'])->name('projects');
+
+Route::get('specificProject/{id}', [HomeController::class, 'specific_project_details'])->name('specificProject');
+
+Route::get('services', [ServicesController::class, 'index'])->name('services');
+
+Route::get('specificService/{id}', [HomeController::class, 'specific_service_details'])->name('specificService');
+

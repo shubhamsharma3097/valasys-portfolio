@@ -1,6 +1,6 @@
 <!-- Footer Start -->
 <footer class="page-footer font-small mdb-color darken-3 pt-4">
-   <div class="container footer">
+   <div class="container-fluid footer">
       <div class="row">
          <div class="col-lg-5 col-md-6 col-sm-12 pr-lg-5">
             <div class="widget">
@@ -50,7 +50,7 @@
          </div>
       </div>
       <hr style="border: 1px solid white;">
-      <p class="mt-2 mb-0 text-center">Copyrights 2023 <span class="text-warning">&copy;</span><span class="main-color font-weight-bold"> Valasys Media</span></p>
+      <p class="mt-2 mb-0 text-center"><span class="text-warning">&copy; </span>{{ date('Y') }}. <span class="main-color font-weight-bold"> All Rights Reserve</span></p>
    </div>
 </footer>
  <!-- Footer End -->
@@ -68,7 +68,7 @@
  <!-- Jquery-migrate JavaScript -->
  <script src="{{ URL::asset('assets/js/jquery-migrate.min.js') }}"></script>
  <!-- Owl.carousel JavaScript -->
- <script src='{{ URL::asset('assets/js/owl.carousel.min.js') }}'></script>
+ {{-- <script src='{{ URL::asset('assets/js/owl.carousel.min.js') }}'></script> --}}
  <!-- Custom JavaScript -->
  {{-- <script src="{{ URL::asset('assets/js/custom.js') }}"></script> --}}
 </body>
