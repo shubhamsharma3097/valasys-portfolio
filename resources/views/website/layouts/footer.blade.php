@@ -66,7 +66,7 @@
  <!--  bootstrap -->
  <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
  <!-- Jquery-migrate JavaScript -->
- <script src="{{ URL::asset('assets/js/jquery-migrate.min.js') }}"></script>
+ {{-- <script src="{{ URL::asset('assets/js/jquery-migrate.min.js') }}"></script> --}}
  <!-- Owl.carousel JavaScript -->
  {{-- <script src='{{ URL::asset('assets/js/owl.carousel.min.js') }}'></script> --}}
  <!-- Custom JavaScript -->

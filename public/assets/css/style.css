@@ -213,6 +213,74 @@ body {
     width: 100px;
 }
 
+/* Second Slider */
+
+/* .slider{
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.slider .owl-item.active.center .slider-card{
+    transform: scale(1.15);
+    opacity: 1;
+    background-color: black;
+}
+
+.slider-card{
+    margin: 50px 15px 90px 15px;
+    border-radius: 5px;
+    box-shadow: 0 15px 45px -20px rgb(red, green, blue);
+    transform: scale(0.9);
+    opacity: 0.5;
+    transition: all 0.3s;
+} */
+
+hr{
+    border-top: 1px solid #fd7e14;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+}
+  
+body::-webkit-scrollbar-track {
+    background: #EC9206;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #171C3C;;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #EC9206;  /* creates padding around scroll thumb */
+}
+
+.scroller {
+    height: 700px;
+    overflow: scroll;
+    scrollbar-width: thin;
+}
+
+
+.owl-nav .owl-next{
+    position: absolute;
+    top:calc(50% - 25px);
+    right: 0;
+    opacity: 1;
+    font-size: 40px!important;
+    z-index: 1;
+}
+
+.owl-nav .owl-prev{
+    position: absolute;
+    top:calc(50% - 25px);
+    left: 0;
+    opacity: 1;
+    font-size: 40px!important;
+    z-index: 1;
+}
+
+/* Second Slider */
+
+
 /* 
 .carousel-control-prev, .carousel-control-next{
         height: 50px;

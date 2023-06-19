@@ -64,10 +64,18 @@ class HomeController extends Controller
 
     // This function is basically used for getting all details for specific project, related project, and services. and render all data in modal 
     public function specific_project_details(Request $request){
+        DB::enableQueryLog();
+        $getAllProjects = DB::table('projects as p')
+                                ->select('p.name', 'pbd.image_name', 'psm.image_name as mappImg')
+                                ->leftJoin('project_banner_descriptions as pbd', 'pbd.project_id', '=', 'p.id')
+                                ->leftJoin('projects_services_mapping as psm', 'psm.project_id', '=', 'p.id')
+                                ->leftJoin('services as s', 's.id', '=', 'psm.service_id')
+                                ->where('p.id',1)->get();
+        // print_r(DB::getQueryLog());exit;
         $post = "SHUBHAM";
         $comments = "SHARMA";
         $likesCount = "sfsdfsdf";
-        $html = view('website.details', compact('post', 'comments', 'likesCount'))->render();
+        $html = view('website.details', compact('post', 'comments', 'getAllProjects'))->render();
         return $html;
     }
     
