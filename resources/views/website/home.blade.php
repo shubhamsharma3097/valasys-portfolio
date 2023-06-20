@@ -24,10 +24,10 @@
         <div class="text-center portfolioMenus mb-3">
             <div class="row" id="portfolioMenusID">
                 <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered active" id="all">All</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="graphic_design">Graphic Design</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="Social_media">Social Media</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="branding">Branding</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="website">Website</div></button></div>
+                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="graphic_design1">Graphic Design</div></button></div>
+                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="Social_media1">Social Media</div></button></div>
+                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="branding1">Branding</div></button></div>
+                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="website1">Website</div></button></div>
             </div>
         </div>
 
@@ -35,22 +35,22 @@
         <div class="row gridMainSection m-2"> 
             <div class="col-md-4">
                 <div class="row">
-                    <div class="col item empty" style="height: 270px">
-                        <div class="image-container w-100 h-100">
+                    <div class="col serviceItem empty" style="height: 270px">
+                        <div class="serviceImageContainer w-100 h-100">
                         </div>
                         {{-- 1 --}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col item empty" style="height: 230px">
-                        <div class="image-container w-100 h-100">
+                    <div class="col serviceItem empty" style="height: 230px">
+                        <div class="serviceImageContainer w-100 h-100">
                         </div>
                         {{-- 4 --}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col item empty" style="height: 370px">
-                        <div class="image-container w-100 h-100">
+                    <div class="col serviceItem empty" style="height: 370px">
+                        <div class="serviceImageContainer w-100 h-100">
                         </div>
                         {{-- 6 --}}
                     </div>
@@ -58,32 +58,32 @@
             </div>
             <div class="col-md-8">
                 <div class="row">
-                    <div class="col item empty" style="height: 270px;margin-right: 10px;">
-                        <div class="image-container w-100 h-100">
+                    <div class="col serviceItem empty" style="height: 270px;margin-right: 10px;">
+                        <div class="serviceImageContainer w-100 h-100">
                         </div>
                         {{-- 2 --}}
                     </div>
-                    <div class="col item empty" style="height: 270px;margin-left: 10px;">
-                        <div class="image-container w-100 h-100">
+                    <div class="col serviceItem empty" style="height: 270px;margin-left: 10px;">
+                        <div class="serviceImageContainer w-100 h-100">
                         </div>
                         {{-- 3 --}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col text-center item empty" style="height: 390px;">
-                        <div class="image-container w-100 h-100">
+                    <div class="col text-center serviceItem empty" style="height: 390px;">
+                        <div class="serviceImageContainer w-100 h-100">
                         </div>
                         {{-- 5 --}}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col item empty" style="height: 210px;margin-right: 10px;">
-                        <div class="image-container w-100 h-100">
+                    <div class="col serviceItem empty" style="height: 210px;margin-right: 10px;">
+                        <div class="serviceImageContainer w-100 h-100">
                         </div>
                         {{-- 7 --}}
                     </div>
-                    <div class="col item empty" style="height: 210px;margin-left: 10px;">
-                        <div class="image-container w-100 h-100">
+                    <div class="col serviceItem empty" style="height: 210px;margin-left: 10px;">
+                        <div class="serviceImageContainer w-100 h-100">
                         </div>
                         {{-- 8 --}}
                     </div>
@@ -99,33 +99,41 @@
             <h1 class="CustomText">PROJECTS</h1>
         </div>
         
-        <div class="row row-col-4 projectsLogos">
-            <div class="col-md p-3 m-3">
-                <img src="{{ URL::asset('assets/images/clients/01.png') }}" alt="Logo">
+        <div class="row projectsLogos m-3">
+            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
+                <div class="projectImageContainer"></div>
+                {{-- <img src="{{ URL::asset('assets/images/clients/01.png') }}" alt="Logo"> --}}
             </div>
-            <div class="col-md p-3 m-3">
-                <img src="{{ URL::asset('assets/images/clients/04.png') }}" alt="Logo">
+            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
+                <div class="projectImageContainer"></div>
+                {{-- <img src="{{ URL::asset('assets/images/clients/04.png') }}" alt="Logo"> --}}
             </div>
-            <div class="col-md p-3 m-3">
-                <img src="{{ URL::asset('assets/images/clients/03.png') }}" alt="Logo">
+            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
+                <div class="projectImageContainer"></div>
+                {{-- <img src="{{ URL::asset('assets/images/clients/03.png') }}" alt="Logo"> --}}
             </div>
-            <div class="col-md p-3 m-3">
-                <img src="{{ URL::asset('assets/images/clients/02.png') }}" alt="Logo">
+            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
+                <div class="projectImageContainer"></div>
+                {{-- <img src="{{ URL::asset('assets/images/clients/02.png') }}" alt="Logo"> --}}
             </div>
             
             <div class="w-100"></div>
 
-            <div class="col-md p-3 m-3">
-                <img src="{{ URL::asset('assets/images/clients/04.png') }}" alt="Logo">
+            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
+                <div class="projectImageContainer"></div>
+                {{-- <img src="{{ URL::asset('assets/images/clients/04.png') }}" alt="Logo"> --}}
             </div>
-            <div class="col-md p-3 m-3">
-                <img src="{{ URL::asset('assets/images/clients/01.png') }}" alt="Logo">
+            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
+                <div class="projectImageContainer"></div>
+                {{-- <img src="{{ URL::asset('assets/images/clients/01.png') }}" alt="Logo"> --}}
             </div>
-            <div class="col-md p-3 m-3">
-                <img src="{{ URL::asset('assets/images/clients/02.png') }}" alt="Logo">
+            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
+                <div class="projectImageContainer"></div>
+                {{-- <img src="{{ URL::asset('assets/images/clients/02.png') }}" alt="Logo"> --}}
             </div>
-            <div class="col-md p-3 m-3">
-                <img src="{{ URL::asset('assets/images/clients/03.png') }}" alt="Logo">
+            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
+                <div class="projectImageContainer"></div>
+                {{-- <img src="{{ URL::asset('assets/images/clients/03.png') }}" alt="Logo"> --}}
             </div>
         </div>
 
@@ -181,9 +189,9 @@
                 url:"{{ route('ajaxRequest') }}",
                 data:{filterData:filterData},
                 beforeSend: function(){
-                    document.querySelectorAll(".item").forEach((el, index) => {
+                    document.querySelectorAll(".serviceItem").forEach((el, index) => {
                         el.className = el.className.replace(" loaded", " empty");
-                        el.querySelector(".image-container").innerHTML = "";
+                        el.querySelector(".serviceImageContainer").innerHTML = "";
                         // el.querySelector("img").src = "";
                         // el.querySelector("img").style = "display:none";
                     });
@@ -192,7 +200,8 @@
                 },
                 success: function(response){
                     if(response.result){
-                        setImages(response.data);
+                        setServicesImages(response.data.servicesData);
+                        setProjectsData(response.data.projectsData)
                     }else{
                         console.warn(response.message);
                     }
@@ -200,22 +209,53 @@
             });
         }
 
-        function setImages(data){
-            document.querySelectorAll(".item").forEach((el, index) => {
+        function setServicesImages(data){
+            document.querySelectorAll(".serviceItem").forEach((el, index) => {
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");
-                    var image = `<a href="javascript:void(0)" onclick="getSpecificServiceDetails('${data[index].service_id}')"><img class="checkImage" src="{{ URL::asset('assets/images/${data[index].img_src}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%"/></a>`;
-                    el.querySelector(".image-container").innerHTML = image;
-                    // el.querySelector("img").src = src;
-                    // el.querySelector("img").style = "display:block";
+                    var src = `{{ URL::asset('assets/services/${data[index].service_image}')}}`;
+                    var image = `<a href="javascript:void(0)" onclick="getSpecificServiceDetails('${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/services/${data[index].service_image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%"/></a>`;
+                    el.querySelector(".serviceImageContainer").innerHTML = image;
                     // el.querySelector(".text-container").innerHTML = data[index].description;
                 }
             });
         }
-        // href="{{ URL('specificProject/${data[index].service_id}') }}"
-        function getSpecificServiceDetails(id) {
+        
+        function setProjectsData(data){
+            console.warn("data", data);
+            document.querySelectorAll(".projectsItem").forEach((el, index) => {
+                if (data[index]) {
+                    el.className = el.className.replace(" empty", " loaded");
+                    var image = `<a href="javascript:void(0)" onclick="getSpecificProjectDetails('project', '${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/projects/${data[index].pro_image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%"/></a>`;
+                    el.querySelector(".projectImageContainer").innerHTML = image;
+                    // el.querySelector(".text-container").innerHTML = data[index].description;
+                }
+            });
+        }
+        
+        function getSpecificProjectDetails(category, id){
             if(id != ''){
                 var url = "{{ route('specificProject', ':id') }}";
+                url = url.replace(':id', id);
+                $.ajax({
+                    type:'get',
+                    url: url,
+                    beforeSend: function(){
+                    },
+                    complete: function(){
+                    },
+                    success: function(response){
+                        $('#modalContent').html(response);
+                        $('#myModal').modal('show');
+                        console.warn(response);
+                    }
+                });
+            }
+        }
+
+        function getSpecificServiceDetails(id) {
+            if(id != ''){
+                var url = "{{ route('specificService', ':id') }}";
                 url = url.replace(':id', id);
 
                 $.ajax({

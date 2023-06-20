@@ -213,52 +213,9 @@ body {
     width: 100px;
 }
 
-/* Second Slider */
-
-/* .slider{
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.slider .owl-item.active.center .slider-card{
-    transform: scale(1.15);
-    opacity: 1;
-    background-color: black;
-}
-
-.slider-card{
-    margin: 50px 15px 90px 15px;
-    border-radius: 5px;
-    box-shadow: 0 15px 45px -20px rgb(red, green, blue);
-    transform: scale(0.9);
-    opacity: 0.5;
-    transition: all 0.3s;
-} */
-
 hr{
     border-top: 1px solid #fd7e14;
 }
-
-body::-webkit-scrollbar {
-    width: 10px;               /* width of the entire scrollbar */
-}
-  
-body::-webkit-scrollbar-track {
-    background: #EC9206;        /* color of the tracking area */
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: #171C3C;;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid #EC9206;  /* creates padding around scroll thumb */
-}
-
-.scroller {
-    height: 700px;
-    overflow: scroll;
-    scrollbar-width: thin;
-}
-
 
 .owl-nav .owl-next{
     position: absolute;
@@ -278,35 +235,53 @@ body::-webkit-scrollbar-thumb {
     z-index: 1;
 }
 
-/* Second Slider */
+.scroller {
+    background-color: #fed9ff;
+    width: 600px;
+    height: 850px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
 
+.scroller::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+}
 
-/* 
-.carousel-control-prev, .carousel-control-next{
-        height: 50px;
-        width: 50px;
-        outline: $color-white;
-        background-size: 100%, 100%;
-        border-radius: 50%;
-        border: 1px solid $color-white;
-        background-color: $color-white;
+.scroller::-webkit-scrollbar-track {
+    background: #171C3C;        /* color of the tracking area */
+}
+.scroller::-webkit-scrollbar-thumb {
+    background-color: #007bff;   /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #171C3C;  /* creates padding around scroll thumb */
+}
+
+.scroller::-moz-scrollbar {
+    width: 6px;
+}
+.scroller::-moz-scrollbar {
+    width: 10px;  /* Width of the scrollbar */
+    background-color: #e90909;  /* Background color of the scrollbar */
+    /* Additional styles */
+-}
+/* @supports (-moz-transform: translate(0, 0)) {
+    .scroller {
+        background-color: #fed9ff;
+        width: 600px;
+        height: 850px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .scroller::scrollbar {
+        width: 6px; 
     }
 
-    .carousel-control-prev-icon { 
-
-        background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"); 
-        width: 60px;
-        height: 78px;
-    }
-    .carousel-control-next-icon { 
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
-        width: 60px;
-        height: 78px;
-    } */
-
-/* Service Modal */
-
-
+} */
 
 .footer {
     margin-top: 100px;
