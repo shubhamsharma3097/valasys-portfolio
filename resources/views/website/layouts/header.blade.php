@@ -26,14 +26,14 @@
                     </li>
                     <li class="nav-item m-3">
                         <a class="header-nav" href=" {{ URL('/services') }} " role="button">
-                        Categories
+                        Services
                         </a>
                     </li>
                     <li class="nav-item m-2 dropdown logIn_li">
                         <a class="nav-link" href="javascript:void(0)" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #6381FB">
                             Log in/Sign up &nbsp;<i class="fa fa-user-circle-o" style="font-size:20px" aria-hidden="true"></i>
                         </a>
-                        
+
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown-2" style="position: initial;">
                             <a class="dropdown-item" href="about-us">Log in</a>
                             <a class="dropdown-item" href="services">Sign up</a>
@@ -42,7 +42,7 @@
                 </ul>
             </div>
         </div>
-    </nav>  
+    </nav>
 
     <!-- Search Bar Start -->
     <div class="container-fluid">
