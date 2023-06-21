@@ -10,16 +10,38 @@ use App\Models\Services;
 
 class HomeController extends Controller
 {
+
+    public function index(){
+        $getAllServices = DB::table('services')->select('name', 'anchor_keyword')->where('status','Active')->inRandomOrder()->limit(5)->get()->toArray();
+        $companyData = DB::table('company')->where('status','Active')->first();
+        if(!empty($companyData)){
+            return view('website.home',compact('getAllServices','companyData'));
+        }else{
+            echo "Company is not available.";
+        }
+    }
+
     public function ajaxRequest(Request $request){
         try {
             $filterData = $request->input('filterData');
             if(!empty($filterData)) {
-
                 $projectsData = DB::table('projects')->select('id', 'name as project_name', 'anchor_keyword', 'logo', 'image', 'small_descp')->where('status','Active')->inRandomOrder()->get();
-
-                $servicesData = DB::table('services')->select('id', 'name as service_name', 'anchor_keyword', 'logo', 'image')->where('status', 'Active')->inRandomOrder()->get();
-
-                return response()->json(['result' => true, 'data' => compact('projectsData', 'servicesData')], 200);
+                if($filterData == 'all'){
+                    $servicesData = DB::table('services')->select('id', 'name as service_name', 'anchor_keyword', 'logo', 'image')->where('status', 'Active')->inRandomOrder()->get();
+                    $serviceImgFolName = 'services';
+                }else{
+                    $serviceImgFolName = 'project_service';
+                    $servicesData = DB::table('services as s')
+                        ->select('s.id', 'idm.image_name as image')
+                        // ->leftjoin('images_descriptions_mapping as idm', 'idm.service_id', '=', 's.id')
+                        ->leftjoin('images_descriptions_mapping as idm', 'idm.service_id', '=', 's.id')
+                        ->where('idm.category', 'Service')
+                        ->where('idm.status', 'Active')
+                        ->where('s.anchor_keyword', $filterData)
+                        ->get();
+                }
+                return response()->json(['result' => true, 'data' => compact('servicesData', 'projectsData', 'serviceImgFolName')], 200);
+                
 
 
                 if($filterData == 'all'){
@@ -131,16 +153,19 @@ class HomeController extends Controller
                 $temp['small_descp'] = $value->small_descp;
                 $temp['brief_descp'] = $value->brief_descp;
                 if($type == 'project'){
+                    $sideImgFolName = 'services';
                     $getAllMappedData = DB::table('images_descriptions_mapping as idm')
                     ->select('idm.image_name', 'idm.short_descp', 'idm.brief_descp', 's.id','s.anchor_keyword as anchor_keyword', 's.name as name', 's.logo', 's.image', 's.small_descp')
-                    ->leftjoin('services as s', 's.id', '=', 'idm.service_id')->where([['idm.project_id', $value->id],['idm.status','Active']])->get();
+                    ->leftjoin('services as s', 's.id', '=', 'idm.service_id')->where([['idm.project_id', $value->id],['idm.status','Active'],['idm.category', 'Mapped']])->get();
                 }else{
+                    $sideImgFolName = 'projects';
                     $getAllMappedData = DB::table('images_descriptions_mapping as idm')
                     ->select('idm.image_name', 'idm.short_descp', 'idm.brief_descp', 'p.id','p.anchor_keyword', 'p.name as name', 'p.logo', 'p.image', 'p.small_descp')
-                    ->leftjoin('projects as p', 'p.id', '=', 'idm.service_id')->where([['idm.service_id', $value->id],['idm.status','Active']])->get();
+                    ->leftjoin('projects as p', 'p.id', '=', 'idm.service_id')
+                    ->where([['idm.service_id', $value->id],['idm.status','Active'],['idm.category', 'Mapped']])->get();
                 }
                 $temp['allMappedData'] = array();
-                $temp['allMappedServiceData'] = array();
+                $temp['allMappedTypedData'] = array();
                 $tempService = array();
                 if(count($getAllMappedData) > 0){
                     $temp['allMappedData'] = $getAllMappedData;
@@ -152,14 +177,14 @@ class HomeController extends Controller
                             $tempService['logo'] = $row->logo;
                             $tempService['image'] = $row->image;
                             $tempService['small_descp'] = $row->small_descp;
-                            array_push($temp['allMappedServiceData'], $tempService);
+                            array_push($temp['allMappedTypedData'], $tempService);
                         }
                     }
                 }
                 array_push($alldata, $temp);
             }
         }
-        $html = view('website.details', compact('alldata', 'id' ,'allTypeData'))->render();
+        $html = view('website.details', compact('alldata', 'id' , 'allTypeData', 'tableName', 'type', 'sideImgFolName'))->render();
         return $html;
     }
 

@@ -1,9 +1,9 @@
 <!-- Header -->
 <header id="main-header">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img class="" src="{{ URL::asset('assets/images/valasys-logo.png') }}" alt="Logo-Image" style="width: 50%;">
+                <img class="" src="{{ URL::asset('assets/images/'.$companyData->logo) }}" alt="Logo-Image" style="width: 50%;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="menu-btn d-inline-block text-warning" id="menu-btn">
@@ -14,19 +14,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                    <li class="nav-item m-3">
+                    <li class="nav-item m-3 menuActive">
                         <a class="header-nav" href=" {{ URL('/') }} ">
-                        Home
+                            Home
                         </a>
                     </li>
                     <li class="nav-item m-3">
                         <a class="header-nav" href=" {{ URL('/projects') }} ">
-                        Projects
+                            Projects
                         </a>
                     </li>
                     <li class="nav-item m-3">
                         <a class="header-nav" href=" {{ URL('/services') }} " role="button">
-                        Services
+                            Services
                         </a>
                     </li>
                     <li class="nav-item m-2 dropdown logIn_li">
@@ -45,7 +45,7 @@
     </nav>
 
     <!-- Search Bar Start -->
-    <div class="container-fluid">
+    <div class="container">
         <form name="search-form" id="search-form" method="post" action="{{ url('search') }}">
             @csrf
             <div class="row row mb-0 searchDiv">

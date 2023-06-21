@@ -15,10 +15,12 @@ use App\Http\Controllers\ServicesController;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return view('website.home');
-});
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return view('website.home');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::post('ajaxRequest', [HomeController::class, 'ajaxRequest'])->name('ajaxRequest');
 

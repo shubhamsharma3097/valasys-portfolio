@@ -2,7 +2,7 @@
 @section('title', 'Valasys - Home')
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row m-2" style="display: flex; justify-content: center;">
             <div class="col-md-6">
                 <div class="customeMenus d-flex align-self-center justify-content-center">
@@ -21,13 +21,15 @@
             <h1 class="CustomText">PORTFOLIO</h1>
         </div>
 
-        <div class="text-center portfolioMenus mb-3">
-            <div class="row" id="portfolioMenusID">
-                <div class="col-md"><button type="button"><div class="col p-2 colCentered active" id="all">All</div></button></div>
-                <div class="col-md"><button type="button"><div class="col p-2 colCentered" id="graphic_design1">Graphic Design</div></button></div>
-                <div class="col-md"><button type="button"><div class="col p-2 colCentered" id="Social_media1">Social Media</div></button></div>
-                <div class="col-md"><button type="button"><div class="col p-2 colCentered" id="branding1">Branding</div></button></div>
-                <div class="col-md"><button type="button"><div class="col p-2 colCentered" id="website1">Website</div></button></div>
+        <div class="text-center serviceMenus mb-1">
+            <div class="row" id="serviceMenusID">
+                <ul class="serviceMenus">
+                    <li class="colCentered active" id='all'>All</li>
+                    @forelse($getAllServices as $row)
+                        <li class="colCentered" id="{{$row->anchor_keyword}}">{{ $row->name }}</li>
+                    @empty
+                    @endforelse
+                </ul>
             </div>
         </div>
 
@@ -155,7 +157,7 @@
             }
         });
 
-        var header = document.getElementById("portfolioMenusID");
+        var header = document.getElementById("serviceMenusID");
         var btns = header.getElementsByClassName("colCentered");
         for (var i = 0; i < btns.length; i++) {
             btns[i].addEventListener("click", function() {
@@ -190,7 +192,7 @@
                 },
                 success: function(response){
                     if(response.result){
-                        setServicesImages(response.data.servicesData);
+                        setServicesImages(response.data.servicesData, response.data.serviceImgFolName);
                         setProjectsData(response.data.projectsData)
                     }else{
                         console.warn(response.message);
@@ -199,12 +201,12 @@
             });
         }
 
-        function setServicesImages(data){
+        function setServicesImages(data, folderName){
             document.querySelectorAll(".serviceItem").forEach((el, index) => {
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");
                     var src = `{{ URL::asset('assets/services/${data[index].service_image}')}}`;
-                    var image = `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/services/${data[index].image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%"/></a>`;
+                    var image = `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/${folderName}/${data[index].image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px"/></a>`;
                     el.querySelector(".serviceImageContainer").innerHTML = image;
                     // el.querySelector(".text-container").innerHTML = data[index].description;
                 }

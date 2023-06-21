@@ -7,13 +7,15 @@
             <h1 class="CustomText">SERVICES</h1>
         </div>
         
-        <div class="text-center portfolioMenus mb-3">
-            <div class="row" id="portfolioMenusID">
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered active" id="all">All</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="graphic_design">Graphic Design</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="Social_media">Social Media</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="branding">Branding</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="website">Website</div></button></div>
+        <div class="text-center serviceMenus mb-1">
+            <div class="row" id="serviceMenusID">
+                <ul class="serviceMenus">
+                    <li class="colCentered active" id='all'>All</li>
+                    @forelse($getAllServices as $row)
+                        <li class="colCentered" id="{{$row->anchor_keyword}}">{{ $row->name }}</li>
+                    @empty
+                    @endforelse
+                </ul>
             </div>
         </div>
 
