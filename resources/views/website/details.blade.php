@@ -1,12 +1,12 @@
 <div class="modal h-100" id="myModal">
     <div class="modal-dialog-xl">
       <div class="modal-content" style="background-color:#090B1A;">
-      
+
         <!-- Modal Header -->
         <div class="modal-header" style="border: none">
           <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
-        
+
         <!-- Modal body -->
         <div class="modal-body">
             <div class="container-fluid">
@@ -15,36 +15,36 @@
                         <div class="carousel-inner">
                             @php $count = 0; @endphp
                             @forelse ($alldata as $proItem)
-                                <div class="carousel-item {{ ($id == $proItem['pro_id'] ) ? 'active' : '' }}">
+                                <div class="carousel-item {{ ($id == $proItem['id'] ) ? 'active' : '' }}">
                                     <div class="row" style="margin-left: 63px">
                                         <div class="modal-header-logo bg-light p-2" style="border-radius: 50%;width: 60px;
                                         height: 60px;
                                         display: flex;
                                         align-items: center;
                                         justify-content: center;">
-                                            <img src="{{ URL::asset('assets/images/projects/'.$proItem['pro_logo']) }}" class="img-rounded" width="50px" height="50px" alt="Logo">
+                                            <img src="{{ URL::asset('assets/images/projects/'.$proItem['logo']) }}" class="img-rounded" width="50px" height="50px" alt="Logo">
                                         </div>
                                         <div class="modal-header-title" style="display: flex;align-items: center;justify-content: center; margin-left:25px; font-size: 30px;">
-                                            {{$proItem['pro_name']}}
+                                            {{$proItem['name']}}
                                         </div>
                                     </div>
                                     <div class="row m-3 justify-content-center">
                                         <div class="col-md-9 pt-5 pb-0 scroller" style="background-color:  #171C3C; border-radius: 10px">
                                             <div class="text-center p-4">
-                                                <img src="{{ URL::asset('assets/images/projects/'.$proItem['pro_logo']) }}" width="150px" height="100px" alt="IMGAE"/>
+                                                <img src="{{ URL::asset('assets/images/projects/'.$proItem['logo']) }}" width="150px" height="100px" alt="IMGAE"/>
                                             </div>
                                             <div class="leftText-container text-center">
-                                                <span style="font-size: 40px; font-weight: bold">{{isset($proItem['pro_name']) ? $proItem['pro_name'] : 'N/A'}}</span>
+                                                <span style="font-size: 40px; font-weight: bold">{{isset($proItem['name']) ? $proItem['name'] : 'N/A'}}</span>
                                             </div>
                                             <div class="description text-center mb-4 mt-3">
-                                                <p style="justify-content: center; margin: 0px 70px;">{{isset($proItem['pro_brief_descp']) ? $proItem['pro_brief_descp'] : 'N/A'}}</p>
+                                                <p style="justify-content: center; margin: 0px 70px;">{{isset($proItem['brief_descp']) ? $proItem['brief_descp'] : 'N/A'}}</p>
                                             </div>
                                             <div class="row mt-2">
-                                                <img src="{{ URL::asset('assets/images/projects/'.$proItem['pro_image'])}}" width="100%" alt="work-images">
+                                                <img src="{{ URL::asset('assets/images/projects/'.$proItem['image'])}}" width="100%" alt="work-images">
                                             </div>
                                             @forelse($proItem['allMappedData'] as $mapData)
                                             <hr>
-                                                <div class="description text-center pb-3 pt-4" id="{{isset($mapData->service_anchor_keyword)?$mapData->service_anchor_keyword:''}}">
+                                                <div class="description text-center pb-3 pt-4" id="{{isset($mapData->anchor_keyword)?$mapData->anchor_keyword:''}}">
                                                     <div class="leftText-container text-center">
                                                         <span style="font-size: 40px; font-weight: bold">{{isset($mapData->short_descp) ? $mapData->short_descp : 'N/A'}}</span>
                                                     </div>
@@ -59,9 +59,9 @@
 
                                         <div class="col-md-2 p-0" style="height:auto">
                                             @forelse ($proItem['allMappedServiceData'] as $serviceData)
-                                                <a href="#{{isset($serviceData['service_anchor_keyword'])?$serviceData['service_anchor_keyword']:''}}">
+                                                <a href="#{{isset($serviceData['anchor_keyword'])?$serviceData['anchor_keyword']:''}}">
                                                     <div class="col mb-3" style="height:auto">
-                                                        <div class="col text-center p-3" 
+                                                        <div class="col text-center p-3"
                                                         style="background-color: #171C3C;
                                                         justify-content: center;
                                                         display: flex;
@@ -70,16 +70,16 @@
                                                         height: auto; border-radius: 10px;">
                                                             {{-- d-flex align-self-center  --}}
                                                             <div class="rightImgLogo-container">
-                                                                <img src="{{ URL::asset('assets/images/services/'.$serviceData['service_logo']) }}" width="90%" alt="Logo">
+                                                                <img src="{{ URL::asset('assets/images/services/'.$serviceData['logo']) }}" width="90%" alt="Logo">
                                                             </div>
                                                             <div class="rightText-container">
-                                                                <p>{{isset($serviceData['service_name'])?$serviceData['service_name']:'N/A'}}</p>
+                                                                <p>{{isset($serviceData['name'])?$serviceData['name']:'N/A'}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </a>
                                             @empty
-                                                
+
                                             @endforelse
                                         </div>
                                     </div>
@@ -98,60 +98,38 @@
                             <span class="">Next</span>
                         </a>
                     </div>
-                    
+
 
                     <div class="row mt-4 d-block" style="margin-left: 63px">
                         <span class="fs-5" style="font-size: 20px">Explore more</span>
                         <div class="col-md-9 p-0 pt-2 pb-2 mt-2">
-                            {{-- <div class="container"> --}}
-                                <div class="text-center">
-                                    <div class="slider">
-                                        <div class="carousalSecond owl-carousel">
-                                            @forelse ($allProjectsData as $row)
-                                                <a href="javascript:void(0)" onclick="getSpecificProjectDetails('project', {{$row->id}})"><div class="slider-card" style="height:auto">
-                                                    <div class="col text-center" 
-                                                    style="background-color: #171C3C;
-                                                    justify-content: center;
-                                                    display: flex;
-                                                    align-items: center;
-                                                    flex-direction: column;
-                                                    height: 150px; border-radius: 10px;">
-                                                        {{-- d-flex align-self-center  --}}
-                                                        <div class="rightImgLogo-container">
-                                                            <img src="{{ URL::asset('assets/images/projects/'.$row->pro_logo) }}" width="80px" height="100px" alt="Logo">
-                                                        </div>
-                                                        <div class="rightText-container">
-                                                            <p>{{isset($row->name)?$row->name:'N/A'}}</p>
-                                                        </div>
+                            <div class="text-center">
+                                <div class="slider">
+                                    <div class="carousalSecond owl-carousel">
+                                        @forelse ($allTypeData as $row)
+                                            <a href="javascript:void(0)" onclick="getSpecificProjectDetails('project', {{$row->id}})"><div class="slider-card" style="height:auto">
+                                                <div class="col text-center"
+                                                style="background-color: #171C3C;
+                                                justify-content: center;
+                                                display: flex;
+                                                align-items: center;
+                                                flex-direction: column;
+                                                height: 150px; border-radius: 10px;">
+                                                    {{-- d-flex align-self-center  --}}
+                                                    <div class="rightImgLogo-container">
+                                                        <img src="{{ URL::asset('assets/images/projects/'.$row->logo) }}" width="80px" height="100px" alt="Logo">
                                                     </div>
-                                                </div></a>   
-                                            @empty
-                                                
-                                            @endforelse
-                                            {{-- <div class="slider-card">
-                                                <div style="height: 150px; background-color:  #171C3C; border-radius: 10px">
-                                                    SHUBHAM
+                                                    <div class="rightText-container">
+                                                        <p>{{isset($row->name)?$row->name:'N/A'}}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="slider-card">
-                                                <div style="height: 150px; background-color:  #171C3C; border-radius: 10px">
-                                                    MAYANK
-                                                </div>
-                                            </div>
-                                            <div class="slider-card">
-                                                <div style="height: 150px; background-color:  #171C3C; border-radius: 10px">
-                                                    AJINKYA
-                                                </div>
-                                            </div>
-                                            <div class="slider-card">
-                                                <div style="height: 150px; background-color:  #171C3C; border-radius: 10px">
-                                                    ROHAN
-                                                </div>
-                                            </div> --}}
-                                        </div>
+                                            </div></a>
+                                        @empty
+
+                                        @endforelse
                                     </div>
                                 </div>
-                            {{-- </div> --}}
+                            </div>
                         </div>
                         <div class="col-md-2 p-0" style="height:auto">
                         </div>
@@ -165,7 +143,7 @@
             </div>
 
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -175,7 +153,7 @@
     $(document).ready(function(){
         $('.carousalSecond').owlCarousel({
             loop:true,
-            margin:10,
+            margin:5,
             responsiveClass:true,
             center:true,
             nav:true,
@@ -192,7 +170,7 @@
                     items:3,
                 },
                 1000:{
-                    items:3,
+                    items:4,
                 }
             }
         });

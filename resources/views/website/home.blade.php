@@ -23,16 +23,16 @@
 
         <div class="text-center portfolioMenus mb-3">
             <div class="row" id="portfolioMenusID">
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered active" id="all">All</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="graphic_design1">Graphic Design</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="Social_media1">Social Media</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="branding1">Branding</div></button></div>
-                <div class="col-md m-2"><button type="button"><div class="col p-2 colCentered" id="website1">Website</div></button></div>
+                <div class="col-md"><button type="button"><div class="col p-2 colCentered active" id="all">All</div></button></div>
+                <div class="col-md"><button type="button"><div class="col p-2 colCentered" id="graphic_design1">Graphic Design</div></button></div>
+                <div class="col-md"><button type="button"><div class="col p-2 colCentered" id="Social_media1">Social Media</div></button></div>
+                <div class="col-md"><button type="button"><div class="col p-2 colCentered" id="branding1">Branding</div></button></div>
+                <div class="col-md"><button type="button"><div class="col p-2 colCentered" id="website1">Website</div></button></div>
             </div>
         </div>
 
         {{-- Grid --}}
-        <div class="row gridMainSection m-2"> 
+        <div class="row gridMainSection m-2">
             <div class="col-md-4">
                 <div class="row">
                     <div class="col serviceItem empty" style="height: 270px">
@@ -98,42 +98,34 @@
         <div class="text-center">
             <h1 class="CustomText">PROJECTS</h1>
         </div>
-        
+
         <div class="row projectsLogos m-3">
             <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
                 <div class="projectImageContainer"></div>
-                {{-- <img src="{{ URL::asset('assets/images/clients/01.png') }}" alt="Logo"> --}}
             </div>
             <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
                 <div class="projectImageContainer"></div>
-                {{-- <img src="{{ URL::asset('assets/images/clients/04.png') }}" alt="Logo"> --}}
             </div>
             <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
                 <div class="projectImageContainer"></div>
-                {{-- <img src="{{ URL::asset('assets/images/clients/03.png') }}" alt="Logo"> --}}
             </div>
             <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
                 <div class="projectImageContainer"></div>
-                {{-- <img src="{{ URL::asset('assets/images/clients/02.png') }}" alt="Logo"> --}}
             </div>
-            
+
             <div class="w-100"></div>
 
             <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
                 <div class="projectImageContainer"></div>
-                {{-- <img src="{{ URL::asset('assets/images/clients/04.png') }}" alt="Logo"> --}}
             </div>
             <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
                 <div class="projectImageContainer"></div>
-                {{-- <img src="{{ URL::asset('assets/images/clients/01.png') }}" alt="Logo"> --}}
             </div>
             <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
                 <div class="projectImageContainer"></div>
-                {{-- <img src="{{ URL::asset('assets/images/clients/02.png') }}" alt="Logo"> --}}
             </div>
             <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;">
                 <div class="projectImageContainer"></div>
-                {{-- <img src="{{ URL::asset('assets/images/clients/03.png') }}" alt="Logo"> --}}
             </div>
         </div>
 
@@ -192,8 +184,6 @@
                     document.querySelectorAll(".serviceItem").forEach((el, index) => {
                         el.className = el.className.replace(" loaded", " empty");
                         el.querySelector(".serviceImageContainer").innerHTML = "";
-                        // el.querySelector("img").src = "";
-                        // el.querySelector("img").style = "display:none";
                     });
                 },
                 complete: function(){
@@ -214,28 +204,29 @@
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");
                     var src = `{{ URL::asset('assets/services/${data[index].service_image}')}}`;
-                    var image = `<a href="javascript:void(0)" onclick="getSpecificServiceDetails('${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/services/${data[index].service_image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%"/></a>`;
+                    var image = `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/services/${data[index].image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%"/></a>`;
                     el.querySelector(".serviceImageContainer").innerHTML = image;
                     // el.querySelector(".text-container").innerHTML = data[index].description;
                 }
             });
         }
-        
+
         function setProjectsData(data){
             console.warn("data", data);
             document.querySelectorAll(".projectsItem").forEach((el, index) => {
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");
-                    var image = `<a href="javascript:void(0)" onclick="getSpecificProjectDetails('project', '${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/projects/${data[index].pro_image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%"/></a>`;
+                    var image = `<a href="javascript:void(0)" onclick="getSpecificDetails('project', '${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/projects/${data[index].logo}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="150px"/></a>`;
                     el.querySelector(".projectImageContainer").innerHTML = image;
                     // el.querySelector(".text-container").innerHTML = data[index].description;
                 }
             });
         }
-        
-        function getSpecificProjectDetails(category, id){
+
+        function getSpecificDetails(type, id){
             if(id != ''){
-                var url = "{{ route('specificProject', ':id') }}";
+                var url = "{{ route('specificDetails', ['type' => ':type', 'id' => ':id']) }}";
+                url = url.replace(':type', type);
                 url = url.replace(':id', id);
                 $.ajax({
                     type:'get',
@@ -253,11 +244,12 @@
             }
         }
 
-        function getSpecificServiceDetails(id) {
+        function getSpecificServiceDetails(type,id) {
             if(id != ''){
-                var url = "{{ route('specificService', ':id') }}";
-                url = url.replace(':id', id);
 
+                var url = "{{ route('specificService', ['type' => ':type', 'id' => ':id']) }}";
+                url = url.replace(':type', type);
+                url = url.replace(':id', id);
                 $.ajax({
                     type:'get',
                     url: url,

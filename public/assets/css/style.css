@@ -84,7 +84,7 @@ body {
 }
 
 .portfolioMenus .row {
-    width: 85%;
+    width: 52%;
 }
 
 .portfolioMenus button {
@@ -117,7 +117,7 @@ body {
 /* Grid Section Start */
 
 .gridMainSection {
-    height: auto; 
+    height: auto;
     padding: 10px;
 }
 
@@ -129,7 +129,7 @@ body {
     background-color: #171C3C;
     border-radius: 10px;
     text-align: center;
-    padding: 5px;
+    padding: 0px;
 }
 
 .gridMainSection .row .col:hover{
@@ -164,6 +164,7 @@ body {
     border-radius: 9px;
     text-align: center;
     color: white;
+    padding: 0;
 }
 
 .projectsLogos img{
@@ -242,7 +243,6 @@ hr{
     overflow-x: hidden;
     overflow-y: auto;
     text-align: center;
-    padding: 20px;
 }
 
 .scroller::-webkit-scrollbar {
@@ -276,9 +276,9 @@ hr{
         text-align: center;
         padding: 20px;
     }
-    
+
     .scroller::scrollbar {
-        width: 6px; 
+        width: 6px;
     }
 
 } */
@@ -308,6 +308,6 @@ hr{
     background-color: #013d7d;
 }
 
-footer { padding-top: 40px; 
+footer { padding-top: 40px;
     /* position: relative;  */
 }

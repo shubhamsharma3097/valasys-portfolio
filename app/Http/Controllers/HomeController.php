@@ -12,12 +12,12 @@ class HomeController extends Controller
 {
     public function ajaxRequest(Request $request){
         try {
-            $filterData = $request->input('filterData'); 
+            $filterData = $request->input('filterData');
             if(!empty($filterData)) {
 
-                $projectsData = DB::table('projects')->select('id', 'name as project_name', 'anchor_keyword', 'pro_logo', 'pro_image', 'pro_small_descp')->where('pro_status','Active')->inRandomOrder()->get();
+                $projectsData = DB::table('projects')->select('id', 'name as project_name', 'anchor_keyword', 'logo', 'image', 'small_descp')->where('status','Active')->inRandomOrder()->get();
 
-                $servicesData = DB::table('services')->select('id', 'name as service_name', 'anchor_keyword' ,'service_image')->where('service_status', 'Active')->inRandomOrder()->get();
+                $servicesData = DB::table('services')->select('id', 'name as service_name', 'anchor_keyword', 'logo', 'image')->where('status', 'Active')->inRandomOrder()->get();
 
                 return response()->json(['result' => true, 'data' => compact('projectsData', 'servicesData')], 200);
 
@@ -71,22 +71,22 @@ class HomeController extends Controller
         }
     }
 
-    // This function is basically used for getting all details for specific project, related project, and services. and render all data in modal 
+    // This function is basically used for getting all details for specific project, related project, and services. and render all data in modal
     public function specific_project_details($id){
         // DB::enableQueryLog();
         if(isset($id)){
             $alldata = array();
             $temp = array();
-            $allProjectsData = DB::table('projects')->select('id', 'name', 'anchor_keyword', 'pro_logo', 'pro_image', 'pro_small_descp', 'pro_brief_descp')->where('pro_status','Active')->get();
+            $allProjectsData = DB::table('projects')->select('id', 'name', 'anchor_keyword', 'logo', 'image', 'small_descp', 'brief_descp')->where('status','Active')->get();
             if(count($allProjectsData) > 0){
                 foreach ($allProjectsData as $key => $value) {
-                    $temp['pro_id'] = $value->id;
-                    $temp['pro_name'] = $value->name;
-                    $temp['pro_anchor_keyword'] = $value->anchor_keyword;
-                    $temp['pro_logo'] = $value->pro_logo;
-                    $temp['pro_image'] = $value->pro_image;
-                    $temp['pro_small_descp'] = $value->pro_small_descp;
-                    $temp['pro_brief_descp'] = $value->pro_brief_descp;
+                    $temp['id'] = $value->id;
+                    $temp['name'] = $value->name;
+                    $temp['anchor_keyword'] = $value->anchor_keyword;
+                    $temp['logo'] = $value->logo;
+                    $temp['image'] = $value->image;
+                    $temp['small_descp'] = $value->small_descp;
+                    $temp['brief_descp'] = $value->brief_descp;
                     $getAllMappedData = DB::table('images_descriptions_mapping as idm')
                     ->select('idm.image_name', 'idm.short_descp', 'idm.brief_descp', 's.id as serviceID','s.anchor_keyword as service_anchor_keyword', 's.name as service_name', 's.service_logo', 's.service_image', 's.service_small_descp')
                     ->leftjoin('services as s', 's.id', '=', 'idm.service_id')->where([['idm.project_id', $value->id],['idm.status','Active']])->get();
@@ -114,10 +114,53 @@ class HomeController extends Controller
             return $html;
         }
     }
-    
-    // This function is basically used for getting all details for specific services, related services, and project. and render all data in modal 
-    public function specific_service_details(Request $request){
-        print_r("SERVICE WORKING");
+
+    // This function is basically used for getting all details for specific services, related services, and project. and render all data in modal
+    public function specific_details($type,$id){
+        $tableName = $type."s";
+        $alldata = array();
+        $temp = array();
+        $allTypeData = DB::table($tableName)->select('id', 'name', 'anchor_keyword', 'logo', 'image', 'small_descp', 'brief_descp')->where('status','Active')->get();
+        if(count($allTypeData) > 0){
+            foreach ($allTypeData as $key => $value) {
+                $temp['id'] = $value->id;
+                $temp['name'] = $value->name;
+                $temp['anchor_keyword'] = $value->anchor_keyword;
+                $temp['logo'] = $value->logo;
+                $temp['image'] = $value->image;
+                $temp['small_descp'] = $value->small_descp;
+                $temp['brief_descp'] = $value->brief_descp;
+                if($type == 'project'){
+                    $getAllMappedData = DB::table('images_descriptions_mapping as idm')
+                    ->select('idm.image_name', 'idm.short_descp', 'idm.brief_descp', 's.id','s.anchor_keyword as anchor_keyword', 's.name as name', 's.logo', 's.image', 's.small_descp')
+                    ->leftjoin('services as s', 's.id', '=', 'idm.service_id')->where([['idm.project_id', $value->id],['idm.status','Active']])->get();
+                }else{
+                    $getAllMappedData = DB::table('images_descriptions_mapping as idm')
+                    ->select('idm.image_name', 'idm.short_descp', 'idm.brief_descp', 'p.id','p.anchor_keyword', 'p.name as name', 'p.logo', 'p.image', 'p.small_descp')
+                    ->leftjoin('projects as p', 'p.id', '=', 'idm.service_id')->where([['idm.service_id', $value->id],['idm.status','Active']])->get();
+                }
+                $temp['allMappedData'] = array();
+                $temp['allMappedServiceData'] = array();
+                $tempService = array();
+                if(count($getAllMappedData) > 0){
+                    $temp['allMappedData'] = $getAllMappedData;
+                    foreach ($getAllMappedData as $row) {
+                        if(!empty($row->name)){
+                            $tempService['id'] = $row->id;
+                            $tempService['anchor_keyword'] = $row->anchor_keyword;
+                            $tempService['name'] = $row->name;
+                            $tempService['logo'] = $row->logo;
+                            $tempService['image'] = $row->image;
+                            $tempService['small_descp'] = $row->small_descp;
+                            array_push($temp['allMappedServiceData'], $tempService);
+                        }
+                    }
+                }
+                array_push($alldata, $temp);
+            }
+        }
+        $html = view('website.details', compact('alldata', 'id' ,'allTypeData'))->render();
+        return $html;
     }
 
 }
