@@ -28,7 +28,7 @@ Route::get('projects', [ProjectsController::class, 'index'])->name('projects');
 
 Route::get('specificProject/{id}', [HomeController::class, 'specific_project_details'])->name('specificProject');
 
-Route::get('services', [ServicesController::class, 'index'])->name('services');
+Route::get('services/{id?}', [ServicesController::class, 'index'])->name('services');
 
 Route::get('specificService/{type}/{id}', [HomeController::class, 'specific_service_details'])->name('specificService');
 Route::get('specificDetails/{type}/{id}', [HomeController::class, 'specific_details'])->name('specificDetails');

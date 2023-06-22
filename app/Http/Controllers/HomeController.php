@@ -12,18 +12,26 @@ class HomeController extends Controller
 {
 
     public function index(){
-        $getAllServices = DB::table('services')->select('name', 'anchor_keyword')->where('status','Active')->inRandomOrder()->limit(5)->get()->toArray();
-        $companyData = DB::table('company')->where('status','Active')->first();
-        if(!empty($companyData)){
-            return view('website.home',compact('getAllServices','companyData'));
-        }else{
-            echo "Company is not available.";
+        try {
+            $getAllServices = DB::table('services')->select('id', 'name', 'anchor_keyword')->where('status','Active')->inRandomOrder()->limit(5)->get()->toArray();
+            $companyData = DB::table('company')->where('status','Active')->first();
+            if(!empty($companyData)){
+                return view('website.home',compact('getAllServices','companyData'));
+            }else{
+                echo "Company is not available.";
+            }
+        } catch (QueryException $e) {
+            if ($e->getCode() == 2002) {
+                echo "Database is not connected";exit;
+            }
         }
     }
 
     public function ajaxRequest(Request $request){
         try {
             $filterData = $request->input('filterData');
+            $filterData = $filterData[0];
+            // print_r($filterData);exit;
             if(!empty($filterData)) {
                 $projectsData = DB::table('projects')->select('id', 'name as project_name', 'anchor_keyword', 'logo', 'image', 'small_descp')->where('status','Active')->inRandomOrder()->get();
                 if($filterData == 'all'){
@@ -41,7 +49,7 @@ class HomeController extends Controller
                         ->get();
                 }
                 return response()->json(['result' => true, 'data' => compact('servicesData', 'projectsData', 'serviceImgFolName')], 200);
-                
+
 
 
                 if($filterData == 'all'){

@@ -21,81 +21,85 @@
             <h1 class="CustomText">PORTFOLIO</h1>
         </div>
 
-        <div class="text-center serviceMenus mb-1">
-            <div class="row" id="serviceMenusID">
-                <ul class="serviceMenus">
-                    <li class="colCentered active" id='all'>All</li>
-                    @forelse($getAllServices as $row)
-                        <li class="colCentered" id="{{$row->anchor_keyword}}">{{ $row->name }}</li>
-                    @empty
-                    @endforelse
-                </ul>
+        <form name="serviceMenus" id="serviceMenusForm" method="get">
+            <div class="text-center serviceMenus mb-1">
+                <div class="row" id="serviceMenusID">
+                    <ul class="serviceMenus">
+                        <li class="colCentered active" id='all'>All</li>
+                        @forelse($getAllServices as $row)
+                            <li class="colCentered" id="{{$row->anchor_keyword}}-{{$row->id}}">{{ $row->name }}</li>
+                        @empty
+                        @endforelse
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        {{-- Grid --}}
-        <div class="row gridMainSection m-2">
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col serviceItem empty" style="height: 270px">
-                        <div class="serviceImageContainer w-100 h-100">
+            {{-- Grid --}}
+            <div class="row gridMainSection m-2">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col serviceItem empty" style="height: 270px">
+                            <div class="serviceImageContainer w-100 h-100">
+                            </div>
+                            {{-- 1 --}}
                         </div>
-                        {{-- 1 --}}
+                    </div>
+                    <div class="row">
+                        <div class="col serviceItem empty" style="height: 230px">
+                            <div class="serviceImageContainer w-100 h-100">
+                            </div>
+                            {{-- 4 --}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col serviceItem empty" style="height: 370px">
+                            <div class="serviceImageContainer w-100 h-100">
+                            </div>
+                            {{-- 6 --}}
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col serviceItem empty" style="height: 230px">
-                        <div class="serviceImageContainer w-100 h-100">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col serviceItem empty" style="height: 270px;margin-right: 10px;">
+                            <div class="serviceImageContainer w-100 h-100">
+                            </div>
+                            {{-- 2 --}}
                         </div>
-                        {{-- 4 --}}
+                        <div class="col serviceItem empty" style="height: 270px;margin-left: 10px;">
+                            <div class="serviceImageContainer w-100 h-100">
+                            </div>
+                            {{-- 3 --}}
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col serviceItem empty" style="height: 370px">
-                        <div class="serviceImageContainer w-100 h-100">
+                    <div class="row">
+                        <div class="col text-center serviceItem empty" style="height: 390px;">
+                            <div class="serviceImageContainer w-100 h-100">
+                            </div>
+                            {{-- 5 --}}
                         </div>
-                        {{-- 6 --}}
+                    </div>
+                    <div class="row">
+                        <div class="col serviceItem empty" style="height: 210px;margin-right: 10px;">
+                            <div class="serviceImageContainer w-100 h-100">
+                            </div>
+                            {{-- 7 --}}
+                        </div>
+                        <div class="col serviceItem empty" style="height: 210px;margin-left: 10px;">
+                            <div class="serviceImageContainer w-100 h-100">
+                            </div>
+                            {{-- 8 --}}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col serviceItem empty" style="height: 270px;margin-right: 10px;">
-                        <div class="serviceImageContainer w-100 h-100">
-                        </div>
-                        {{-- 2 --}}
-                    </div>
-                    <div class="col serviceItem empty" style="height: 270px;margin-left: 10px;">
-                        <div class="serviceImageContainer w-100 h-100">
-                        </div>
-                        {{-- 3 --}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col text-center serviceItem empty" style="height: 390px;">
-                        <div class="serviceImageContainer w-100 h-100">
-                        </div>
-                        {{-- 5 --}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col serviceItem empty" style="height: 210px;margin-right: 10px;">
-                        <div class="serviceImageContainer w-100 h-100">
-                        </div>
-                        {{-- 7 --}}
-                    </div>
-                    <div class="col serviceItem empty" style="height: 210px;margin-left: 10px;">
-                        <div class="serviceImageContainer w-100 h-100">
-                        </div>
-                        {{-- 8 --}}
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="text-center m-4">
-            <a href="{{ URL('/services') }}"><button class="btn orange">View All</button></a>
-        </div>
+            <div class="text-center m-4">
+                <input type="hidden" id="serviceMenuId">
+                <button type="button" onclick="submitServiceMenuForm()" class="btn orange">View All</button>
+                <!-- <a href="{{ URL('/services') }}"><button type="submit" class="btn orange">View All</button></a> -->
+            </div>
+        </form>
 
         <div class="text-center">
             <h1 class="CustomText">PROJECTS</h1>
@@ -142,6 +146,17 @@
 @push('js')
     <script type="text/javascript">
 
+        function submitServiceMenuForm(){
+            var id = $('#serviceMenuId').val();
+            if(id !=''){
+                var baseUrl = "{{ URL('/services') }}" + "/" + id;
+            }else{
+                var baseUrl = "{{ URL('/services') }}";
+            }
+            $("#serviceMenusForm").attr("action",baseUrl);
+            $('#serviceMenusForm').submit();
+        }
+
         $(document).ready(function () {
             $('#search').val('');
             getGridData();
@@ -164,7 +179,10 @@
                 var current = document.getElementsByClassName("active");
                 current[0].className = current[0].className.replace(" active", "");
                 this.className += " active";
-                getGridData(this.id);
+                var serviceID = this.id.split('-');
+                console.warn("this.id",serviceID);
+                $('#serviceMenuId').val(serviceID[1]);
+                getGridData(serviceID);
             });
         }
 
@@ -173,7 +191,7 @@
             if(value===undefined){
                 var filterData = $('#search').val().trim();
                 if(filterData == '' || filterData == null){
-                    filterData = 'all';
+                    filterData = ['all'];
                 }
             }else{
                 filterData = value;
