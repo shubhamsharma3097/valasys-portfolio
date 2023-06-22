@@ -26,6 +26,8 @@ Route::post('ajaxRequest', [HomeController::class, 'ajaxRequest'])->name('ajaxRe
 
 Route::get('projects', [ProjectsController::class, 'index'])->name('projects');
 
+Route::post('projectDetails', [ProjectsController::class, 'projectDetails'])->name('projectDetails');
+
 Route::get('specificProject/{id}', [HomeController::class, 'specific_project_details'])->name('specificProject');
 
 Route::get('services/{id?}', [ServicesController::class, 'index'])->name('services');

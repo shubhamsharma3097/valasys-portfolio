@@ -8,9 +8,22 @@ use Illuminate\Support\Facades\DB;
 class ServicesController extends Controller
 {
     public function index($id=''){
-        print_r($id);exit;
         $companyData = DB::table('company')->where('status','Active')->first();
-        $getAllServices = DB::table('services')->select('name', 'anchor_keyword')->where('status','Active')->inRandomOrder()->limit(5)->get()->toArray();
-        return view('website.services',compact('getAllServices','companyData'));
+        $getAllServices = DB::table('services')->select('id', 'name', 'anchor_keyword')->where('status','Active')->limit(5)->get()->toArray();
+        if(empty($id)){
+            $servicesData = DB::table('services')->select('id', 'name as service_name', 'anchor_keyword', 'logo', 'image')->where('status', 'Active')->inRandomOrder()->get();
+            $serviceImgFolName = 'services';
+        }else{
+            $serviceImgFolName = 'project_service';
+            $servicesData = DB::table('services as s')
+                ->select('s.id', 'idm.image_name as image')
+                ->leftjoin('images_descriptions_mapping as idm', 'idm.service_id', '=', 's.id')
+                ->where('idm.category', 'Service')
+                ->where('idm.status', 'Active')
+                ->where('s.id', $id)
+                ->get();
+        }
+
+        return view('website.services',compact('servicesData', 'companyData', 'getAllServices', 'id', 'serviceImgFolName'));
     }
 }

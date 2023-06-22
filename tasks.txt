@@ -1,0 +1,9 @@
+services page bacha hai (isme se anchor_keyword ki jarurat nahhi hai usse hatana pedga)
+url id ko encode karna hai
+project page bacha hai
+company add karna bacha hai (DONE)
+submenus dynamic karna bacha hai 
+search bar dynamic karna bacha hai
+loginn section bacha hai
+mobile view bacha hai
+need to create common js file and model file for similar functions

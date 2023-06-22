@@ -28,7 +28,7 @@
                                             {{$item['name']}}
                                         </div>
                                     </div>
-                                    <div class="row m-3 justify-content-center">
+                                    <div class="row m-3 justify-content-center ">
                                         <div class="col-md-9 pt-5 pb-0 scroller" style="background-color:  #171C3C; border-radius: 10px">
                                             <div class="text-center p-4">
                                                 <img src="{{ URL::asset('assets/images/'.$tableName.'/'.$item['logo']) }}" width="150px" height="100px" alt="IMGAE"/>

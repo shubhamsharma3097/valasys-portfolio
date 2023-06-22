@@ -223,7 +223,6 @@
             document.querySelectorAll(".serviceItem").forEach((el, index) => {
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");
-                    var src = `{{ URL::asset('assets/services/${data[index].service_image}')}}`;
                     var image = `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/${folderName}/${data[index].image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px"/></a>`;
                     el.querySelector(".serviceImageContainer").innerHTML = image;
                     // el.querySelector(".text-container").innerHTML = data[index].description;
@@ -243,31 +242,10 @@
             });
         }
 
+        // This function is used for opening modal for specific services and projects both.
         function getSpecificDetails(type, id){
             if(id != ''){
                 var url = "{{ route('specificDetails', ['type' => ':type', 'id' => ':id']) }}";
-                url = url.replace(':type', type);
-                url = url.replace(':id', id);
-                $.ajax({
-                    type:'get',
-                    url: url,
-                    beforeSend: function(){
-                    },
-                    complete: function(){
-                    },
-                    success: function(response){
-                        $('#modalContent').html(response);
-                        $('#myModal').modal('show');
-                        console.warn(response);
-                    }
-                });
-            }
-        }
-
-        function getSpecificServiceDetails(type,id) {
-            if(id != ''){
-
-                var url = "{{ route('specificService', ['type' => ':type', 'id' => ':id']) }}";
                 url = url.replace(':type', type);
                 url = url.replace(':id', id);
                 $.ajax({

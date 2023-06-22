@@ -13,7 +13,7 @@ class HomeController extends Controller
 
     public function index(){
         try {
-            $getAllServices = DB::table('services')->select('id', 'name', 'anchor_keyword')->where('status','Active')->inRandomOrder()->limit(5)->get()->toArray();
+            $getAllServices = DB::table('services')->select('id', 'name', 'anchor_keyword')->where('status','Active')->limit(5)->get()->toArray();
             $companyData = DB::table('company')->where('status','Active')->first();
             if(!empty($companyData)){
                 return view('website.home',compact('getAllServices','companyData'));
@@ -30,8 +30,8 @@ class HomeController extends Controller
     public function ajaxRequest(Request $request){
         try {
             $filterData = $request->input('filterData');
-            $filterData = $filterData[0];
             // print_r($filterData);exit;
+            $filterData = $filterData[0];
             if(!empty($filterData)) {
                 $projectsData = DB::table('projects')->select('id', 'name as project_name', 'anchor_keyword', 'logo', 'image', 'small_descp')->where('status','Active')->inRandomOrder()->get();
                 if($filterData == 'all'){
@@ -50,47 +50,6 @@ class HomeController extends Controller
                 }
                 return response()->json(['result' => true, 'data' => compact('servicesData', 'projectsData', 'serviceImgFolName')], 200);
 
-
-
-                if($filterData == 'all'){
-                    $data = array();
-                    $servicesData = array();
-                    $servicesData = DB::table('services')->select('id', 'name as service_name', 'anchor_keyword' ,'service_image')->where('service_status', 'Active')->get();
-                    // $alltypes = ['website', 'branding', 'graphic_design', 'social_media'];
-                    // $serviceData = Services::whereIn('type',$alltypes)->get();
-                    // if(count($serviceData) > 0){
-                    //     foreach ($serviceData as $value) {
-                    //         if(!empty($value['service_img_id'])){
-                    //             $randIds = explode(',',$value['service_img_id']);
-                    //             $randomElement = array_rand(array_flip($randIds),2);
-                    //             $bannerData = Banners::whereIn('id',$randomElement)->get()->toArray();
-                    //             if(count($bannerData) > 0){
-                    //                 foreach ($bannerData as $row) {
-                    //                     $data['service_id'] =  $value->id;
-                    //                     $data['name'] =  $value->name;
-                    //                     $data['type'] =  $value->type;
-                    //                     $data['project_id'] =  $value->project_id;
-                    //                     $data['img_src'] =  $row['img_src'];
-                    //                     array_push($servicesData, $data);
-                    //                 }
-                    //             }
-                    //         }
-                    //     }
-                    //     return response()->json(['result' => true, 'data' => compact('projectsData', 'servicesData')], 200);
-                    // } else {
-                    //     return response()->json(['status' => 500, 'result' => false, 'data' =>'', 'message' => "NO RECORD FOUND"]);
-                    // }
-                } else {
-                    $getBanners = Banners:: where('name', $filterData)
-                                            ->where('img_status','Active')
-                                            ->inRandomOrder()
-                                            ->get();
-                    if(count($getBanners) > 0){
-                        return response()->json(['result' => true, 'data' => $getBanners], 200);
-                    }else{
-                        return response()->json(['status' => 500, 'result' => false, 'data' =>'', 'message' => "NO RECORD FOUND"]);
-                    }
-                }
             }else{
                 return response()->json(['status' => 500, 'result' => false, 'data' =>'', 'message' => "Something Went Wrong"]);
             }
