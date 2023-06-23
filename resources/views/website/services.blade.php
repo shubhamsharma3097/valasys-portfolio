@@ -68,7 +68,6 @@
         });
 
         function getServiceDetailes(filterData){
-            console.warn("filterData ",filterData);
             $.ajax({
                 type:'POST',
                 url:"{{ route('ajaxRequest') }}",

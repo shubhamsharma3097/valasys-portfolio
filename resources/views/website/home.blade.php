@@ -3,6 +3,19 @@
 @section('content')
 
     <div class="container">
+
+        <div class="waves-box">
+            <a href="https://www.youtube.com/watch?v=iH3qXKPsnZM" class="iq-video popup-youtube">
+                <i class="fa fa-play" aria-hidden="true"></i>
+            </a>
+            <div class="iq-waves">
+                <div class="waves wave-1"></div>
+                <div class="waves wave-2"></div>
+                <div class="waves wave-3"></div>
+            </div>
+        </div>
+
+        
         <div class="row m-2" style="display: flex; justify-content: center;">
             <div class="col-md-6">
                 <div class="customeMenus d-flex align-self-center justify-content-center">
@@ -39,21 +52,22 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="col serviceItem empty" style="height: 270px">
-                            <div class="serviceImageContainer w-100 h-100">
+                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
+                                {{-- <img class="checkImage" src="{{ URL::asset('assets/images/projects/social_media.png')}}" width="100%" height="150px"/> --}}
                             </div>
                             {{-- 1 --}}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col serviceItem empty" style="height: 230px">
-                            <div class="serviceImageContainer w-100 h-100">
+                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
                             </div>
                             {{-- 4 --}}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col serviceItem empty" style="height: 370px">
-                            <div class="serviceImageContainer w-100 h-100">
+                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
                             </div>
                             {{-- 6 --}}
                         </div>
@@ -62,31 +76,31 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col serviceItem empty" style="height: 270px;margin-right: 10px;">
-                            <div class="serviceImageContainer w-100 h-100">
+                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
                             </div>
                             {{-- 2 --}}
                         </div>
                         <div class="col serviceItem empty" style="height: 270px;margin-left: 10px;">
-                            <div class="serviceImageContainer w-100 h-100">
+                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
                             </div>
                             {{-- 3 --}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-center serviceItem empty" style="height: 390px;">
-                            <div class="serviceImageContainer w-100 h-100">
+                        <div class="col serviceItem empty" style="height: 390px;">
+                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
                             </div>
                             {{-- 5 --}}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col serviceItem empty" style="height: 210px;margin-right: 10px;">
-                            <div class="serviceImageContainer w-100 h-100">
+                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
                             </div>
                             {{-- 7 --}}
                         </div>
                         <div class="col serviceItem empty" style="height: 210px;margin-left: 10px;">
-                            <div class="serviceImageContainer w-100 h-100">
+                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
                             </div>
                             {{-- 8 --}}
                         </div>
@@ -144,6 +158,7 @@
     <div id="modalContent" class="m-3"></div>
 @endsection
 @push('js')
+<script src="{{ URL::asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <script type="text/javascript">
 
         function submitServiceMenuForm(){
@@ -157,8 +172,17 @@
             $('#serviceMenusForm').submit();
         }
 
-        $(document).ready(function () {
+        jQuery(document).ready(function () {
             $('#search').val('');
+
+            $('.popup-youtube').magnificPopup({
+                disableOn: 700,
+                type: 'iframe',
+                mainClass: 'mfp-fade',
+                removalDelay: 160,
+                preloader: false,
+                fixedContentPos: true
+            });
             getGridData();
         });
 
@@ -223,7 +247,11 @@
             document.querySelectorAll(".serviceItem").forEach((el, index) => {
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");
-                    var image = `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/${folderName}/${data[index].image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px"/></a>`;
+                    var image = '';
+                    if(index % 2 != 0){
+                        image +=`<div class="waves-box"><a href="https://www.youtube.com/watch?v=iH3qXKPsnZM" class="iq-video popup-youtube"><i class="fa fa-play" aria-hidden="true"></i></a><div class="iq-waves"><div class="waves wave-1"></div><div class="waves wave-2"></div><div class="waves wave-3"></div></div></div>`;
+                    }
+                    image += `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/${folderName}/${data[index].image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px"/></a>`;
                     el.querySelector(".serviceImageContainer").innerHTML = image;
                     // el.querySelector(".text-container").innerHTML = data[index].description;
                 }

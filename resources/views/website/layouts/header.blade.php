@@ -14,17 +14,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">
-                    <li class="nav-item m-3 menuActive">
+                    {{-- {{ (request()->segment(2) == 'cities') ? 'active' : '' }} --}}
+                    <li class="nav-item m-3 {{ (request()->segment(1) == '') ? 'menuActive' : '' }}">
                         <a class="header-nav" href=" {{ URL('/') }} ">
                             Home
                         </a>
                     </li>
-                    <li class="nav-item m-3">
+                    <li class="nav-item m-3 {{ (request()->segment(1) == 'projects') ? 'menuActive' : '' }}">
                         <a class="header-nav" href=" {{ URL('/projects') }} ">
                             Projects
                         </a>
                     </li>
-                    <li class="nav-item m-3">
+                    <li class="nav-item m-3 {{ (request()->segment(1) == 'services') ? 'menuActive' : '' }}">
                         <a class="header-nav" href=" {{ URL('/services') }} " role="button">
                             Services
                         </a>
@@ -35,8 +36,8 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown-2" style="position: initial;">
-                            <a class="dropdown-item" href="about-us">Log in</a>
-                            <a class="dropdown-item" href="services">Sign up</a>
+                            <a class="dropdown-item" href="#">Log in</a>
+                            <a class="dropdown-item" href="#">Sign up</a>
                         </div>
                     </li>
                 </ul>
@@ -45,7 +46,7 @@
     </nav>
 
     <!-- Search Bar Start -->
-    <div class="container">
+    <div class="container" id="top">
         <form name="search-form" id="search-form" method="post" action="{{ url('search') }}">
             @csrf
             <div class="row row mb-0 searchDiv">

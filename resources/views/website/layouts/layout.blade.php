@@ -14,6 +14,8 @@
       <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}"/>
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}"/>
+
+      <link rel="stylesheet" href="{{ URL::asset('assets/css/magnific-popup.css') }}"/>
       <!-- Style CSS -->
       <link rel='stylesheet' href='{{ URL::asset('assets/css/style.css') }}'/>
       <!-- OWL Carousal CSS -->

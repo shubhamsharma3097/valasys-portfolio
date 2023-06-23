@@ -3,8 +3,14 @@
       <div class="modal-content" style="background-color:#090B1A;">
 
         <!-- Modal Header -->
-        <div class="modal-header" style="border: none">
-          <button type="button" class="close" data-dismiss="modal">×</button>
+        <div class="modal-head" style="border: none">
+            {{-- <div id="back-to-top">
+                <a class="top" id="top" href="#top"> <i class="fa fa-angle-up" aria-hidden="true"></i><i class="ion-ios-arrow-up"></i> </a>
+            </div> --}}
+            <div id="close-modal">
+                <a class="close-modal-btn" id="close-modal-btn" data-dismiss="modal"><i class="fa fa-close" style="font-size:20px; font-weight:normal" aria-hidden="true"></i></a>
+                {{-- <button type="button" id="close-modal-btn" class="close-modal-btn" data-dismiss="modal">X</button> --}}
+            </div>
         </div>
 
         <!-- Modal body -->
@@ -15,12 +21,13 @@
                         <div class="carousel-inner">
                             @php $count = 0; @endphp
                             @forelse ($alldata as $item)
-                                <div class="carousel-item {{ ($id == $item['id'] ) ? 'active' : '' }}">
+                                <div class="carousel-item {{ ($id == $item['id'] ) ? 'active' : '' }}" style="margin-left: 32px;">
                                     <div class="row" style="margin-left: 63px">
-                                        <div class="modal-header-logo bg-light p-2" style="border-radius: 50%;width: 60px;
+                                        <div class="modal-header-logo p-2" style="border-radius: 50%;width: 60px;
                                         height: 60px;
                                         display: flex;
                                         align-items: center;
+                                        background-color: #171c3c;
                                         justify-content: center;">
                                             <img src="{{ URL::asset('assets/images/'.$tableName.'/'.$item['logo']) }}" class="img-rounded" width="50px" height="50px" alt="Logo">
                                         </div>
@@ -88,20 +95,18 @@
                             @endforelse
 
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                            <span class="">Prev</span>&nbsp;
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>&nbsp;
-                            <span class="">Next</span>
-                        </a>
+                        <div id="modal-middle-carousel">
+                            <a class="middle-carousel-prev carousel-control-prev" id="middle-carousel-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                        </div>
+                        <div id="modal-middle-carousel">
+                            <a class="middle-carousel-next carousel-control-next" id="middle-carousel-prev" href="#carouselExampleControls" role="button" data-slide="next"> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        </div>
                     </div>
 
 
-                    <div class="row mt-4 d-block" style="margin-left: 63px">
+                    <div class="row mt-4 d-block" style="margin-left: 92px">
                         <span class="fs-5" style="font-size: 20px">Explore more</span>
-                        <div class="col-md-9 p-0 pt-2 pb-2 mt-2">
+                        <div class="col-md-10 mt-2" style="padding: 10px 51px 0 0;">
                             <div class="text-center">
                                 <div class="slider">
                                     <div class="carousalSecond owl-carousel">
@@ -129,8 +134,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-2 p-0" style="height:auto">
                         </div>
                     </div>
                     {{-- Second Carousal --}}
@@ -168,7 +171,7 @@
                     items:3,
                 },
                 1000:{
-                    items:4,
+                    items:5,
                 }
             }
         });

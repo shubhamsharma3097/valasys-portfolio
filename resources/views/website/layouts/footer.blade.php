@@ -56,7 +56,7 @@
  <!-- Footer End -->
  <!-- === back-to-top === -->
  <div id="back-to-top">
-    <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up">NOT WORKING YET</i> </a>
+    <a class="top" id="top" href="#top"> <i class="fa fa-angle-up" aria-hidden="true"></i><i class="ion-ios-arrow-up"></i> </a>
  </div>
  <!-- === back-to-top End === -->
  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -66,10 +66,19 @@
  <!--  bootstrap -->
  <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
  <!-- Jquery-migrate JavaScript -->
- {{-- <script src="{{ URL::asset('assets/js/jquery-migrate.min.js') }}"></script> --}}
  <!-- Owl.carousel JavaScript -->
  {{-- <script src='{{ URL::asset('assets/js/owl.carousel.min.js') }}'></script> --}}
  <!-- Custom JavaScript -->
  {{-- <script src="{{ URL::asset('assets/js/custom.js') }}"></script> --}}
 </body>
+<script>
+   jQuery('#back-to-top').fadeOut();
+   jQuery(window).on("scroll", function() {
+         if (jQuery(this).scrollTop() > 250) {
+            jQuery('#back-to-top').fadeIn(1400);
+         } else {
+            jQuery('#back-to-top').fadeOut(400);
+         }
+   });
+</script>
 </html>
