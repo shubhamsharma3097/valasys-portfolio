@@ -9,7 +9,7 @@
         
         <div class="text-center serviceMenus mb-1">
             <div class="row" id="serviceMenusID">
-                <ul class="serviceMenus">
+                <ul class="serviceMenusUl">
                     <li class="colCentered {{(empty($id)) ? 'active' : ''}}" id='all'>All</li>
                     @forelse($getAllServices as $row)
                         <li class="colCentered {{($id == $row->id) ? 'active' : ''}}" id="{{$row->anchor_keyword}}-{{$row->id}}">{{ $row->name }}</li>
@@ -23,7 +23,7 @@
             <div class="row justify-content-center p-3">
                 @forelse ($servicesData as $item)
                     <div class="col-md-4 p-2 w-100 serviceImgDiv">
-                        <div class="serviceItem loaded" onclick="getSpecificDetails('service',{{$item->id}})">
+                        <div class="serviceItem serviceBtn loaded" onclick="getSpecificDetails('service',{{$item->id}})">
                             <img src="{{ URL::asset('assets/images/'.$serviceImgFolName.'/'.$item->image) }}" width="100%" height="100%" alt="Logo">
                         </div>
                     </div>

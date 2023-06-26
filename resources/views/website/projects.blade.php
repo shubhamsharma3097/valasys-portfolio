@@ -23,7 +23,7 @@
             <div class="row justify-content-center mt-3 projectsImgs">
                 @forelse ($getAllProjects as $item)
                     <div class="col-md-3">
-                        <div class="col-md p-3 m-3 d-flex align-item-center">
+                        <div class="col-md p-3 m-3 d-flex align-item-center" data-aos="zoom-in" data-aos-duration="1000" onclick="getSpecificDetails('project',{{$item->id}})">
                             <img src="{{ URL::asset('assets/images/'.$folderName.'/'.$item->logo) }}" width="100%" alt="Logo">
                         </div>
                     </div>
@@ -36,61 +36,33 @@
                 @endforelse
             </div>
         </div>
-        
+        <div id="modalContent" class="m-3"></div>        
     </div>
 
 @endsection
 @push('js')
     <script type="text/javascript">
 
-        // $(document).ready(function () {
-        //     var header = document.getElementById("projectMenusID");
-        //     var listItem = header.getElementsByClassName("colCentered");
-        //     for (var i = 0; i < listItem.length; i++) {
-        //         listItem[i].addEventListener("click", function() {
-        //             var current = document.getElementsByClassName("active");
-        //             current[0].className = current[0].className.replace(" active", "");
-        //             this.className += " active";
-        //             var serviceID = this.id.split('-');
-        //             console.warn("this.id",serviceID);
-        //             getProjectDetailes(serviceID)
-        //         });
-        //     }
-
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         }
-        //     });
-        // });
-
-        // function getProjectDetailes(filterData) {
-        //     $.ajax({
-        //         type:'POST',
-        //         url:"{{ route('projectDetails') }}",
-        //         data:{filterData:filterData},
-        //         beforeSend: function(){
-        //             document.querySelector('.projectsContainer').innerHTML = "";
-        //             // document.querySelector('#loading').classList.add('loading');
-        //             // document.querySelector('#loading-content').classList.add('loading-content');
-        //         },
-        //         complete: function(){
-        //         },
-        //         success: function(response){
-        //             if(response.result){
-        //                 setProjectsImages(response);
-        //             }else{
-        //                 console.warn(response.message);
-        //             }
-        //             // document.querySelector('#loading').classList.remove('loading');
-        //             // document.querySelector('#loading-content').classList.remove('loading-content');
-        //         }
-        //     });
-        // }
-
-        // function projectsContainer(data){
-        //     console.warn(data);
-        // }
+        function getSpecificDetails(type, id){
+            if(id != ''){
+                var url = "{{ route('specificDetails', ['type' => ':type', 'id' => ':id']) }}";
+                url = url.replace(':type', type);
+                url = url.replace(':id', id);
+                $.ajax({
+                    type:'get',
+                    url: url,
+                    beforeSend: function(){
+                    },
+                    complete: function(){
+                    },
+                    success: function(response){
+                        console.warn("response ",response);
+                        $('#modalContent').html(response);
+                        $('#myModal').modal('show');
+                    }
+                });
+            }
+        }
 
     </script>
 @endpush

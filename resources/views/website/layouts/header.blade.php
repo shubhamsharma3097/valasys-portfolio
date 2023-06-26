@@ -13,7 +13,7 @@
                 <span class="ion-navicon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                <ul class="navbar-nav mr-auto justify-content-end">
                     {{-- {{ (request()->segment(2) == 'cities') ? 'active' : '' }} --}}
                     <li class="nav-item m-3 {{ (request()->segment(1) == '') ? 'menuActive' : '' }}">
                         <a class="header-nav" href=" {{ URL('/') }} ">
@@ -30,7 +30,7 @@
                             Services
                         </a>
                     </li>
-                    <li class="nav-item m-2 dropdown logIn_li">
+                    <li class="nav-item m-2 dropdown">
                         <a class="nav-link" href="javascript:void(0)" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #6381FB">
                             Log in/Sign up &nbsp;<i class="fa fa-user-circle-o" style="font-size:20px" aria-hidden="true"></i>
                         </a>
@@ -51,16 +51,16 @@
             @csrf
             <div class="row row mb-0 searchDiv">
                 <div class="col-md-7 mt-2">
-                    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4 shade">
+                    <div class="p-1 bg-light rounded rounded-pill shadow-sm shade">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <button id="button-addon2" type="submit" class="btn btn-link text-warning shade"><i class="fa fa-search"></i></button>
+                                <button id="button-addon2" type="submit" class="btn btn-link shade"><i class="fa fa-search"></i></button>
                             </div>
-                            <input type="search" name="search" id="search" placeholder="What're you searching for?" aria-describedby="button-addon2" class="form-control border-0 bg-light shade" style="color:white">
+                            <input type="search" name="search" id="search" placeholder="Search" aria-describedby="button-addon2" class="form-control border-0 bg-light shade" style="color:white">
                         </div>
                     </div>
                 </div>
-                <div class="form-group col-md-2 mt-3">
+                <div class="form-group col-md-2 mt-3 text-center filterBtn">
                     <button type="button" class="btn rounded-pill btn-block shadow-sm orange" onclick="getGridData()">Search</button>
                 </div>
             </div>

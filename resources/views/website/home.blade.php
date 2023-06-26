@@ -3,28 +3,23 @@
 @section('content')
 
     <div class="container">
-
-        <div class="waves-box">
-            <a href="https://www.youtube.com/watch?v=iH3qXKPsnZM" class="iq-video popup-youtube">
-                <i class="fa fa-play" aria-hidden="true"></i>
-            </a>
-            <div class="iq-waves">
-                <div class="waves wave-1"></div>
-                <div class="waves wave-2"></div>
-                <div class="waves wave-3"></div>
-            </div>
-        </div>
-
-
-        <div class="row m-2" style="display: flex; justify-content: center;">
-            <div class="col-md-6">
-                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left">
-                    <span>PROJECTS</span>
+        <div class="row m-2 awardsContainer p-3">
+            <div class="col-md-4">
+                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/globee.png') }}" alt="">
+                    {{-- <span>PROJECTS</span> --}}
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="customeMenus d-flex align-self-center justify-content-center">
-                    <span>CATEGORIES</span>
+            <div class="col-md-4">
+                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/CIO.png') }}" alt="">
+                    {{-- <span>CATEGORIES</span> --}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/best-in-biz.png') }}" alt="">
+                    {{-- <span>CATEGORIES</span> --}}
                 </div>
             </div>
             {{-- <div class="col-md-5 m-3 customeMenus d-flex align-self-center justify-content-center"><span></span></div> --}}
@@ -37,7 +32,7 @@
         <form name="serviceMenus" id="serviceMenusForm" method="get">
             <div class="text-center serviceMenus mb-1">
                 <div class="row" id="serviceMenusID" data-aos="zoom-in">
-                    <ul class="serviceMenus">
+                    <ul class="serviceMenusUl">
                         <li class="colCentered active" id='all'>All</li>
                         @forelse($getAllServices as $row)
                             <li class="colCentered" id="{{$row->anchor_keyword}}-{{$row->id}}">{{ $row->name }}</li>
@@ -51,23 +46,22 @@
             <div class="row gridMainSection m-2">
                 <div class="col-md-4">
                     <div class="row">
-                        <div class="col serviceItem empty" style="height: 270px" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
-                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
-                                {{-- <img class="checkImage" src="{{ URL::asset('assets/images/projects/social_media.png')}}" width="100%" height="150px"/> --}}
+                        <div class="col serviceItem empty" id="divFirst" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                            <div class="serviceImageContainer">
                             </div>
                             {{-- 1 --}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col serviceItem empty" style="height: 230px" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
-                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
+                        <div class="col serviceItem empty" id="divFourth" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                            <div class="serviceImageContainer">
                             </div>
                             {{-- 4 --}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col serviceItem empty" style="height: 370px" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
-                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
+                        <div class="col serviceItem empty" id="divSixth" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                            <div class="serviceImageContainer">
                             </div>
                             {{-- 6 --}}
                         </div>
@@ -75,32 +69,32 @@
                 </div>
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col serviceItem empty" style="height: 270px;margin-right: 10px;" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
-                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
+                        <div class="col serviceItem empty" id="divSecond" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                            <div class="serviceImageContainer">
                             </div>
                             {{-- 2 --}}
                         </div>
-                        <div class="col serviceItem empty" style="height: 270px;margin-left: 10px;" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
-                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
+                        <div class="col serviceItem empty" id="divThird" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                            <div class="serviceImageContainer">
                             </div>
                             {{-- 3 --}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col serviceItem empty" style="height: 390px;" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
-                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
+                        <div class="col serviceItem empty" id="divFifth" data-aos="flip-up" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                            <div class="serviceImageContainer">
                             </div>
                             {{-- 5 --}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col serviceItem empty" style="height: 210px;margin-right: 10px;" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
-                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
+                        <div class="col serviceItem empty" id="divSeventh" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                            <div class="serviceImageContainer">
                             </div>
                             {{-- 7 --}}
                         </div>
-                        <div class="col serviceItem empty" style="height: 210px;margin-left: 10px;" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
-                            <div class="serviceImageContainer w-100 h-100" style="display:inline-block; align-items: center;justify-content: center;">
+                        <div class="col serviceItem empty" id="divEighth" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                            <div class="serviceImageContainer">
                             </div>
                             {{-- 8 --}}
                         </div>
@@ -120,31 +114,29 @@
         </div>
 
         <div class="row projectsLogos m-3">
-            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="col-md p-0 m-2 projectsItem empty" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="projectImageContainer"></div>
             </div>
-            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;"data-aos="zoom-in" data-aos-duration="1000">
+            <div class="col-md p-0 m-2 projectsItem empty" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="projectImageContainer"></div>
             </div>
-            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;"data-aos="zoom-in" data-aos-duration="1000">
+            <div class="col-md p-0 m-2 projectsItem empty" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="projectImageContainer"></div>
             </div>
-            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;"data-aos="zoom-in" data-aos-duration="1000">
+            <div class="col-md p-0 m-2 projectsItem empty" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="projectImageContainer"></div>
             </div>
-
             <div class="w-100"></div>
-
-            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;"data-aos="zoom-out" data-aos-duration="1000">
+            <div class="col-md p-0 m-2 projectsItem empty" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="projectImageContainer"></div>
             </div>
-            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;"data-aos="zoom-out" data-aos-duration="1000">
+            <div class="col-md p-0 m-2 projectsItem empty" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="projectImageContainer"></div>
             </div>
-            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;"data-aos="zoom-out" data-aos-duration="1000">
+            <div class="col-md p-0 m-2 projectsItem empty" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="projectImageContainer"></div>
             </div>
-            <div class="col-md p-0 m-2 projectsItem empty" style="display: flex;align-items: center;justify-content: center;"data-aos="zoom-out" data-aos-duration="1000">
+            <div class="col-md p-0 m-2 projectsItem empty" data-aos="zoom-in" data-aos-duration="1000">
                 <div class="projectImageContainer"></div>
             </div>
         </div>
@@ -173,44 +165,35 @@
         }
 
         jQuery(document).ready(function () {
-            $('#search').val('');
-
-            $('.popup-youtube').magnificPopup({
-                disableOn: 700,
-                type: 'iframe',
-                mainClass: 'mfp-fade',
-                removalDelay: 160,
-                preloader: false,
-                fixedContentPos: true
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
-            getGridData();
-        });
-
-        $('.carousel').carousel({
-            interval: false,
-        });
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            // For Activating Service menu btn and calling function to get service section data when user clicks on specific menu
+            var header = document.getElementById("serviceMenusID");
+            var btns = header.getElementsByClassName("colCentered");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                    var serviceID = this.id.split('-');
+                    console.warn("this.id",serviceID);
+                    $('#serviceMenuId').val(serviceID[1]);
+                    getServiceData(serviceID);
+                });
             }
+            $('.carousel').carousel({
+                interval: false,
+            });
+            
+            // $('#search').val('');    
+            getServiceData();
         });
 
-        var header = document.getElementById("serviceMenusID");
-        var btns = header.getElementsByClassName("colCentered");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function() {
-                var current = document.getElementsByClassName("active");
-                current[0].className = current[0].className.replace(" active", "");
-                this.className += " active";
-                var serviceID = this.id.split('-');
-                console.warn("this.id",serviceID);
-                $('#serviceMenuId').val(serviceID[1]);
-                getGridData(serviceID);
-            });
-        }
-
-        function getGridData(value){
+        // This function is called when page is loaded and when user clicks on specific service menu
+        function getServiceData(value){
             var filterData = null;
             if(value===undefined){
                 var filterData = $('#search').val().trim();
@@ -242,7 +225,8 @@
                 }
             });
         }
-
+        
+        // This function is used for setting all images services images into servicess section
         function setServicesImages(data, folderName){
             document.querySelectorAll(".serviceItem").forEach((el, index) => {
                 if (data[index]) {
@@ -263,11 +247,13 @@
                     }
                     image += `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/${folderName}/${data[index].image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px"/></a>`;
                     el.querySelector(".serviceImageContainer").innerHTML = image;
+                    setIframeModal();
                     // el.querySelector(".text-container").innerHTML = data[index].description;
                 }
             });
         }
 
+        // This function is used for setting all images project images into projects section
         function setProjectsData(data){
             console.warn("data", data);
             document.querySelectorAll(".projectsItem").forEach((el, index) => {
@@ -277,6 +263,18 @@
                     el.querySelector(".projectImageContainer").innerHTML = image;
                     // el.querySelector(".text-container").innerHTML = data[index].description;
                 }
+            });
+        }
+
+        // This is function is used for opening iframe modal using plugins after the service images initialize
+        function setIframeModal(){
+            $('.popup-youtube').magnificPopup({
+                disableOn: 700,
+                type: 'iframe',
+                mainClass: 'mfp-fade',
+                removalDelay: 160,
+                preloader: false,
+                fixedContentPos: true
             });
         }
 

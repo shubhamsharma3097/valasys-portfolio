@@ -3,14 +3,31 @@ body {
     color: #FEFEFF;
     min-height: 100vh;
 }
+.navbar-nav li a{
+    text-decoration: none;
+}
+.navbar-nav li{
+    transition: transform 0.3s;
+}
+.navbar-nav li:hover{
+    transform: translateY(-7px);
+    background-color: #6280FA;
+    border-radius: 10px;
+    color: white;
+}
 
+.logIn_li:hover{
+    color: white;
+    background-color: red;
+}
+/* 
 .navbar {
     overflow: hidden;
     background-color: #090B1A;
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
+    position: fixed;
+    top: 0;
     height: 95px;
-    width: 100%; /* Full width */
+    width: 100%; 
     z-index: 999;
 }
 
@@ -23,7 +40,7 @@ body {
     background-color: #6280FA;
     color: #fd7e14;
     border-radius: 9px;
-}
+} */
 
 .menuActive {
     background-color: #6280FA;
@@ -31,7 +48,7 @@ body {
 }
 .searchDiv {
     justify-content: center;
-    margin-top: 115px;
+    margin-top: 65px;
 }
 
 .logIn_li {
@@ -55,6 +72,14 @@ body {
     font-style: italic;
 }
 
+/* Awards Container CSS */
+
+    .awardsContainer{
+        display: flex; justify-content: center;
+    }
+
+/* Awards Container CSS */
+
 /* Button Effect */
 
 .orange {
@@ -64,13 +89,13 @@ body {
 
 .shade {
     background-color:#171C3C  !important;
-    border-radius: 40px !important
-
+    border-radius: 40px !important;
+    /* margin-bottom: 40px;     */
 }
 
 .customeMenus{
-    background-color: #171C3C;
-    height: 270px;
+    /* background-color: #171C3C; */
+    height: 200px;
     border-radius: 7px;
     font-family: 'Gilroy', sans-serif;
     margin-bottom: 15px;
@@ -93,14 +118,104 @@ body {
     color: #232230;
 }
 
+/* Service CSS */
+
+.serviceItemOne{
+    height: 270px;
+    background-color: #EC9206;
+}
+#divFirst{
+    height: 270px;
+}
+#divSecond{
+    height: 270px;margin-right: 10px;
+}
+#divThird{
+    height: 270px;margin-left: 10px;
+}
+#divFourth{
+    height: 230px;
+}
+#divFifth{
+    height: 390px;
+}
+#divSixth{
+    height: 370px;
+}
+#divSeventh{
+    height: 210px;margin-right: 10px;
+}
+#divEighth{
+    height: 210px;margin-left: 10px;
+}
+
+.serviceImageContainer {
+    display:inline-block; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
 .serviceMenus{
     display: flex;
     justify-content: center;
     margin-bottom: 0;
+    margin-top: 10px;
 }
 
 .serviceMenus ul li {
     margin: 0 10px;
+}
+
+.serviceItem {
+    height: 240px;
+    background-color: #171C3C;
+    width: 100%;
+    border-radius: 10px;
+}
+.serviceImgDiv img {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Service CSS Ends*/
+
+/* Projects Section Start */
+
+.projectsLogos .col-md {
+    height: 177px;
+    background-color: #171C3C;
+    width: 100%;
+    border-radius: 9px;
+    text-align: center;
+    color: white;
+    padding: 0;
+}
+
+.projectsItem{
+    display: flex;align-items: center;justify-content: center;
+}
+
+.projectsLogos img{
+    padding: 20px;
+}
+
+.projectsLogos .col-md:hover{
+    box-shadow: 0px 5px 10px 0px rgba(215, 210, 210, 0.7);
+}
+
+.projectsImgs .col-md {
+    background-color: #171C3C;
+    border-radius: 10px;
+    height: 165px;
+}
+.projectsImgs .col-md img{
+    padding: 20px;
+}
+
+.projectsImgs .col-md:hover{
+    box-shadow: 0px 5px 10px 0px rgba(112, 141, 236, 0.7);
 }
 
 .projectMenus{
@@ -112,6 +227,10 @@ body {
 .projectMenus ul li {
     margin: 0 10px;
 }
+/* Projects Section End- */
+
+/* Projects Section End */
+
 
 ul li {
     display: inline;
@@ -137,7 +256,7 @@ ul li {
 
 .gridMainSection {
     height: auto;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .gridMainSection .row {
@@ -174,50 +293,69 @@ ul li {
 
 /* Grid Section End */
 
-/* Projects Section Start */
+/* Modal CSS */
 
-.projectsLogos .col-md {
-    height: 177px;
-    background-color: #171C3C;
-    width: 100%;
-    border-radius: 9px;
-    text-align: center;
-    color: white;
-    padding: 0;
-}
+    .modal-content{
+        background-color:#090B1A;
+    }
+    #close-modal-btn i{
+        font-size:20px; font-weight:normal;
+    }
+    .carousel-item{
+        margin-left: 32px;
+    }
+    .middleContainer{
+        margin-left: 63px;
+    }
+    .modal-header-logo{
+        border-radius: 50%;width: 60px;height: 60px;display: flex;align-items: center;background-color: #171c3c;justify-content: center;
+    }
+    .modal-header-title{
+        display: flex;align-items: center;justify-content: center; margin-left:25px; font-size: 30px;
+    }
+    .modalMiddleContainer{
+        background-color:  #171C3C; border-radius: 10px;
+    }
+    .leftNameContainer{
+        font-size: 40px; font-weight: bold;
+    }
+    .briefDescpContainer{
+        justify-content: center; margin: 0px 70px;
+    }
 
-.projectsLogos img{
-    padding: 20px;
-}
+    .modalSideContainer{
+        background-color: #171C3C;justify-content: center;display: flex;align-items: center;flex-direction: column;height: auto; border-radius: 10px;
+    }
 
-.projectsLogos .col-md:hover{
-    box-shadow: 0px 5px 10px 0px rgba(215, 210, 210, 0.7);
-}
-
-.serviceItem {
-    height: 240px;
-    background-color: #171C3C;
-    width: 100%;
-    border-radius: 10px;
-}
-.serviceImgDiv img {
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.projectsImgs .col-md {
-    background-color: #171C3C;
-    border-radius: 10px;
-    height: 165px;
-}
-.projectsImgs .col-md img{
-    padding: 20px;
-}
-
-.projectsImgs .col-md:hover{
-    box-shadow: 0px 5px 10px 0px rgba(112, 141, 236, 0.7);
-}
-/* Projects Section End- */
+    .bottomExploreContainer{
+        margin-left: 92px;
+    }
+    .exploreSpan{
+        font-size: 20px
+    }
+    .mainContainer{
+        padding: 10px 51px 0 0;
+    }
+    .mainContainer a{
+        text-decoration: underline;
+        color: white;
+    }
+    .slider-card{
+        background-color: #171C3C;justify-content: center;display: flex; align-items: center; flex-direction: column; height: 150px; border-radius: 10px;
+    }
+    .bottomImgLogoContainer{
+        padding: 10px 15px 0 15px;
+    }
+    .bottomTextContainer{
+        padding: 5px;
+    }
+    .bottomContaineritems{
+        padding: 0;
+        background-color: #171C3C;
+        height: 150px;
+        border-radius: 10px;
+    }
+/* Modal CSS */
 
 /* Service Modal */
 
@@ -262,7 +400,7 @@ hr{
     z-index: 1;
 }
 .serviceScroller {
-    height: 500px;
+    height: 600px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -306,11 +444,23 @@ hr{
 }
 
 .footerMenus li{
-    list-style: none;
+    display: block;
+    padding: 0;
 }
 
 .footerMenus a {
     color: #FEFEFF;
+}
+.socialLinks{
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+.socialLinks li {
+    padding: 0 9px 0 0;
+}
+.widget{
+    margin: 10px 0;
 }
 
 .header-nav{
@@ -453,4 +603,90 @@ Service Hover CSS
 
 .serviceImageContainer img:hover{
     background-color: #EC9206;
+}
+
+@media(max-width : 998px){
+    .CustomText{
+        font-size: 92px;
+        font-weight: bold;
+        /* padding: 6px; */
+        color: #232230;
+    }
+    .serviceMenusUl {
+        padding: 0;
+        text-align: center;
+    }
+    .serviceMenus ul li {
+        display:block;
+    }
+}
+
+/* For Mobiles */
+@media(max-width : 480px) and (min-width:320px){
+    .navbar-brand{
+        padding: 15px;
+    }
+    .navbar-brand img{
+        height: 50px;
+        width: 180px !important;
+    }
+    .searchDiv{
+        padding: 0 34px;
+    }
+    .shade{
+        margin-bottom: 10px;
+    }
+    .filterBtn button{
+        width: 150px;
+        margin-left: 60px;
+    }
+    .CustomText{
+        font-size: 62px;
+        font-weight: bold;
+        /* padding: 6px; */
+        color: #232230;
+    }
+
+    .searchDiv {
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .serviceMenus ul li {
+        display:block;
+    }
+
+    #divSecond{
+        width: 100%;
+    }
+    .serviceMenusUl li{
+        font-size: 20px;
+    }
+    .widget p{
+        text-align: justify;
+        font-size: 20px;
+    }
+
+
+
+
+
+    #close-modal .close-modal-btn{
+        right: 34px;
+    }
+    #modal-middle-carousel .middle-carousel-next{
+        right: 34px;
+    }
+    #modal-middle-carousel .middle-carousel-prev{
+        left: 34px;
+    }
+    .middleContainer {
+        margin-left: 15px;
+    }
+    .carousel-item{
+        margin-left: 0;
+    }
+    .bottomExploreContainer{
+        margin-left: 35px;
+    }
 }

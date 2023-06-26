@@ -4,44 +4,44 @@
       <div class="row">
          <div class="col-lg-5 col-md-6 col-sm-12 pr-lg-5">
             <div class="widget">
-               <img src="{{ URL::asset('assets/images/valasys-logo.png') }}" class="footer-logo" alt="#" width="150px">
+               <img src="{{ URL::asset('assets/images/valasys-logo.png') }}" class="footer-logo" alt="#" height="auto" width="200px">
                <p class=" mt-4 mr-lg-4">{{ $companyData->small_descp }}</p>
             </div>
-            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 pl-0">
-               <ul class="info-share social-icone d-inline list-inline">
-                  <li class="list-inline-item"><a href="{{ $companyData->fb_url }}"><i class="fa fa-facebook"></i></a></li>
-                  <li class="list-inline-item"><a href="{{ $companyData->twitter_url }}"><i class="fa fa-twitter"></i></a></li>
-                  <li class="list-inline-item"><a href="{{ $companyData->linkedin_url }}"><i class="fa fa-linkedin"></i></a></li>
-                  <li class="list-inline-item"><a href="{{ $companyData->insta_url }}"><i class="fa fa-instagram"></i></a></li>
+            <div class="">
+               <ul class="socialLinks">
+                  <li><a href="{{ $companyData->fb_url }}"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="{{ $companyData->twitter_url }}"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="{{ $companyData->linkedin_url }}"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="{{ $companyData->insta_url }}"><i class="fa fa-instagram"></i></a></li>
                </ul>
             </div>
          </div>
          <div class="col-lg-3 col-md-6">
             <div class="widget">
-               <h4 class="footer-title">Useful links</h4>
+               <h4 class="footer-title">Quick links</h4>
                <div class="menu-link">
-                  <ul id="menu-link-menu" class="menu footerMenus">
-                     <li> <a href="index.html">Projects</a></li>
-                     <li><a href="aboutus.html">Categories</a></li>
-                     <li><a href="faq.html">Portfolio</a></li>
+                  <ul id="menu-link-menu" class="footerMenus">
+                     <li> <a href=" {{ URL('/projects') }} ">Projects</a></li>
+                     <li><a href=" {{ URL('/services') }} ">Services</a></li>
+                     <li><a href=" {{ URL('/') }} ">Portfolio</a></li>
                   </ul>
                </div>
             </div>
          </div>
          <div class="col-lg-4 col-md-6">
             <div class="widget">
-               <h4 class="footer-title ">Contact Us</h4>
+               <h4 class="footer-title ">Contact</h4>
                <div class="row">
                   <div class="col-sm-12">
-                     <ul class="iq-contact footerMenus">
+                     <ul class="footerMenus">
                         <li>
-                           <a><i class="fa fa-home" aria-hidden="true"></i><span> {{$companyData->address}}</span></a>
+                           <a><i class="fa fa-home" aria-hidden="true"></i> Address: <span> {{$companyData->address}}</span></a>
                         </li>
                         <li>
-                           <a href="tel:+0123456789"><i class="fa fa-phone" aria-hidden="true"></i><span>{{$companyData->contact}}</span></a>
+                           <a href="tel:+0123456789"><i class="fa fa-phone" aria-hidden="true"></i> Phone: <span>{{$companyData->contact}}</span></a>
                         </li>
                         <li>
-                           <a href="mailto:support@themes.com"><i class="fa fa-envelope" aria-hidden="true"></i><span> {{$companyData->email}}</span></a>
+                           <a href="mailto:support@themes.com"><i class="fa fa-envelope" aria-hidden="true"></i> Email: <span> {{$companyData->email}}</span></a>
                         </li>
                      </ul>
                   </div>
