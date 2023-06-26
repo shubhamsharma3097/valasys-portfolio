@@ -26,6 +26,8 @@
       {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gilroy"> --}}
       <!-- Responsive CSS -->
       {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/> --}}
+      <!-- AOS CSS Animation -->
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
    </head>
    <body>
         @include('website.layouts.header')

@@ -2,8 +2,10 @@ services page bacha hai (isme se anchor_keyword ki jarurat nahhi hai usse hatana
 url id ko encode karna hai
 project page bacha hai
 company add karna bacha hai (DONE)
-submenus dynamic karna bacha hai 
+submenus dynamic karna bacha hai
 search bar dynamic karna bacha hai
 login section bacha hai
 mobile view bacha hai
 need to create common js file and model file for similar functions
+
+Agar main slider slide hua to child slider bhi slide hoga for excluding active project/service

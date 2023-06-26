@@ -1,3 +1,6 @@
+
+<!-- AOS CSS Animation -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <div class="modal h-100" id="myModal">
     <div class="modal-dialog-xl">
       <div class="modal-content" style="background-color:#090B1A;">
@@ -36,14 +39,14 @@
                                         </div>
                                     </div>
                                     <div class="row m-3 justify-content-center ">
-                                        <div class="col-md-9 pt-5 pb-0 scroller" style="background-color:  #171C3C; border-radius: 10px">
+                                        <div class="col-md-9 pt-5 pb-0 scroller zommIn" style="background-color:  #171C3C; border-radius: 10px" data-aos="zoom-in" data-aos-duration="1000">
                                             <div class="text-center p-4">
                                                 <img src="{{ URL::asset('assets/images/'.$tableName.'/'.$item['logo']) }}" width="150px" height="100px" alt="IMGAE"/>
                                             </div>
                                             <div class="leftText-container text-center">
                                                 <span style="font-size: 40px; font-weight: bold">{{isset($item['name']) ? $item['name'] : 'N/A'}}</span>
                                             </div>
-                                            <div class="description text-center mb-4 mt-3">
+                                            <div class="description text-center mb-4 mt-3" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
                                                 <p style="justify-content: center; margin: 0px 70px;">{{isset($item['brief_descp']) ? $item['brief_descp'] : 'N/A'}}</p>
                                             </div>
                                             <div class="row mt-2">
@@ -67,7 +70,7 @@
                                         <div class="col-md-2 p-0" style="height:auto">
                                             @forelse ($item['allMappedTypedData'] as $typeData)
                                                 <a href="#{{isset($typeData['anchor_keyword'])?$typeData['anchor_keyword']:''}}_{{$typeData['id']}}">
-                                                    <div class="col mb-3" style="height:auto">
+                                                    <div class="col mb-3" style="height:auto" data-aos="zoom-in" data-aos-duration="3000">
                                                         <div class="col text-center p-3"
                                                         style="background-color: #171C3C;
                                                         justify-content: center;
@@ -96,10 +99,10 @@
 
                         </div>
                         <div id="modal-middle-carousel">
-                            <a class="middle-carousel-prev carousel-control-prev" id="middle-carousel-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                            <a class="middle-carousel-prev carousel-control-prev" onclick="initAOS()" id="middle-carousel-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i></a>
                         </div>
                         <div id="modal-middle-carousel">
-                            <a class="middle-carousel-next carousel-control-next" id="middle-carousel-prev" href="#carouselExampleControls" role="button" data-slide="next"> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            <a class="middle-carousel-next carousel-control-next" onclick="initAOS()" id="middle-carousel-prev" href="#carouselExampleControls" role="button" data-slide="next"> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
@@ -111,7 +114,7 @@
                                 <div class="slider">
                                     <div class="carousalSecond owl-carousel">
                                         @forelse ($allTypeData as $row)
-                                            <a href="javascript:void(0)" onclick="getSpecificDetails('{{$type}}', {{$row->id}})"><div class="slider-card" style="height:auto">
+                                            <a href="javascript:void(0)" onclick="getSpecificDetails('{{$type}}', {{$row->id}})" data-aos="zoom-in" data-aos-duration="3000"><div class="slider-card" style="height:auto">
                                                 <div class="col text-center"
                                                 style="background-color: #171C3C;
                                                 justify-content: center;
@@ -150,7 +153,19 @@
   </div>
   <!--  OWL Carousal JS -->
   <script src="{{ URL::asset('assets/js/owl.carousel.min.js') }}"></script>
+ <!-- AOS Animation Javascript -->
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+        function initAOS(){
+            alert()
+            AOS.init();
+            setTimeout(() => {
+
+            }, 0);
+        }
+        setTimeout(() => {
+          AOS.init();
+        }, 0);
     $(document).ready(function(){
         $('.carousalSecond').owlCarousel({
             loop:true,

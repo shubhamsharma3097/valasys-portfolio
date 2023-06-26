@@ -65,6 +65,9 @@
  <script src="{{ URL::asset('assets/js/jquery-min.js') }}"></script>
  <!--  bootstrap -->
  <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
+ <!-- AOS Animation Javascript -->
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
  <!-- Jquery-migrate JavaScript -->
  <!-- Owl.carousel JavaScript -->
  {{-- <script src='{{ URL::asset('assets/js/owl.carousel.min.js') }}'></script> --}}
@@ -72,13 +75,14 @@
  {{-- <script src="{{ URL::asset('assets/js/custom.js') }}"></script> --}}
 </body>
 <script>
-   jQuery('#back-to-top').fadeOut();
-   jQuery(window).on("scroll", function() {
+    jQuery('#back-to-top').fadeOut();
+    jQuery(window).on("scroll", function() {
          if (jQuery(this).scrollTop() > 250) {
             jQuery('#back-to-top').fadeIn(1400);
          } else {
             jQuery('#back-to-top').fadeOut(400);
          }
-   });
+    });
+    AOS.init();
 </script>
 </html>
