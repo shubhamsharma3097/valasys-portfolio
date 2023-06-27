@@ -22,8 +22,8 @@
         <div class="projectsContainer projectScroller">
             <div class="row justify-content-center mt-3 projectsImgs">
                 @forelse ($getAllProjects as $item)
-                    <div class="col-md-3">
-                        <div class="col-md p-3 m-3 d-flex align-item-center" data-aos="zoom-in" data-aos-duration="1000" onclick="getSpecificDetails('project',{{$item->id}})">
+                    <div class="col-md-3 projectItems">
+                        <div class="col-md d-flex align-item-center" data-aos="zoom-in" data-aos-duration="1000" onclick="getSpecificDetails('project',{{$item->id}})">
                             <img src="{{ URL::asset('assets/images/'.$folderName.'/'.$item->logo) }}" width="100%" alt="Logo">
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                 @endforelse
             </div>
         </div>
-        <div id="modalContent" class="m-3"></div>        
+        <div id="modalContent" class="m-3"></div>
     </div>
 
 @endsection

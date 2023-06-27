@@ -20,14 +20,14 @@ body {
     color: white;
     background-color: red;
 }
-/* 
+/*
 .navbar {
     overflow: hidden;
     background-color: #090B1A;
     position: fixed;
     top: 0;
     height: 95px;
-    width: 100%; 
+    width: 100%;
     z-index: 999;
 }
 
@@ -150,7 +150,7 @@ body {
 }
 
 .serviceImageContainer {
-    display:inline-block; 
+    display:inline-block;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -227,6 +227,11 @@ body {
 .projectMenus ul li {
     margin: 0 10px;
 }
+
+.projectItems{
+    padding: 14px;
+}
+
 /* Projects Section End- */
 
 /* Projects Section End */
@@ -651,11 +656,12 @@ Service Hover CSS
         justify-content: center;
         margin-top: 15px;
     }
-
     .serviceMenus ul li {
         display:block;
     }
-
+    .shade{
+        font-size: 20px;
+    }
     #divSecond{
         width: 100%;
     }
@@ -666,19 +672,22 @@ Service Hover CSS
         text-align: justify;
         font-size: 20px;
     }
+    .projectItems{
+        padding: 14px 46px;
+    }
 
 
 
 
 
     #close-modal .close-modal-btn{
-        right: 34px;
+        right: 9px;
     }
     #modal-middle-carousel .middle-carousel-next{
-        right: 34px;
+        right: 9px;
     }
     #modal-middle-carousel .middle-carousel-prev{
-        left: 34px;
+        left: 9px;
     }
     .middleContainer {
         margin-left: 15px;
