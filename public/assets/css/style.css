@@ -341,10 +341,6 @@ ul li {
     .mainContainer{
         padding: 10px 51px 0 0;
     }
-    .mainContainer a{
-        text-decoration: underline;
-        color: white;
-    }
     .slider-card{
         background-color: #171C3C;justify-content: center;display: flex; align-items: center; flex-direction: column; height: 150px; border-radius: 10px;
     }
@@ -353,6 +349,8 @@ ul li {
     }
     .bottomTextContainer{
         padding: 5px;
+        color: white;
+        font-weight: bold;
     }
     .bottomContaineritems{
         padding: 0;

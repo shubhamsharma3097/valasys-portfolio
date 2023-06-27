@@ -1,11 +1,21 @@
-services page bacha hai (isme se anchor_keyword ki jarurat nahhi hai usse hatana pedga)
-url id ko encode karna hai
-project page bacha hai
-company add karna bacha hai (DONE)
-submenus dynamic karna bacha hai
+Menu ko responsive karna
+Modal ko transparent karna
+submenus pe carousel bacha hai 
+mobile view bacha hai
 search bar dynamic karna bacha hai
 login section bacha hai
-mobile view bacha hai
+Need to add loader in website.
+
+
+services page bacha hai (isme se anchor_keyword ki jarurat nahhi hai usse hatana pedga)
+url id ko encode karna hai
+project page bacha hai (DONE)
+company add karna bacha hai (DONE)
 need to create common js file and model file for similar functions
 
 Agar main slider slide hua to child slider bhi slide hoga for excluding active project/service
+Youtube link is pending to implement backend.
+Modal transparent karna bacha hai
+
+
+https://itsupportvalasys-my.sharepoint.com/:x:/g/personal/alok_valasys_com/ERNr4D2ukNxMhiFI3JTCkKYB5rqSi5NzP8pkiL12FCkCYQ?rtime=ufeCbkp320g

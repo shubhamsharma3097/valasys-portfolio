@@ -16,7 +16,7 @@ class ServicesController extends Controller
         }else{
             $serviceImgFolName = 'project_service';
             $servicesData = DB::table('services as s')
-                ->select('s.id', 'idm.image_name as image')
+                ->select('s.id', 'idm.image_name as image', 'idm.is_thumbnail', 'idm.thumbnail_url')
                 ->leftjoin('images_descriptions_mapping as idm', 'idm.service_id', '=', 's.id')
                 ->where('idm.category', 'Service')
                 ->where('idm.status', 'Active')

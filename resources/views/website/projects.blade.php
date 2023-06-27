@@ -19,6 +19,13 @@
             </div>
         </div> --}}
 
+        
+        {{-- <div class="col-md-3 projectsItem" data-aos="zoom-in" data-aos-duration="1000">
+            <div onclick="getSpecificDetails('project',{{$item->id}})">
+                <img src="{{ URL::asset('assets/images/'.$folderName.'/'.$item->logo) }}" width="100%" height="150px" alt="Logo">
+            </div>
+        </div> --}}
+
         <div class="projectsContainer projectScroller">
             <div class="row justify-content-center mt-3 projectsImgs">
                 @forelse ($getAllProjects as $item)

@@ -232,9 +232,10 @@
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");
                     var image = '';
-                    if(index % 2 != 0){
+                    if(data[index].is_video == 'Yes'){
+                        var href = data[index].video_url;
                         image += `<div class="waves-box">
-                            <a href="https://www.youtube.com/watch?v=iH3qXKPsnZM" class="iq-video popup-youtube">
+                            <a href=${href} class="iq-video popup-youtube">
                                 <i class="fa fa-play" aria-hidden="true"></i>
                             </a>
                             <div class="iq-waves">
@@ -243,19 +244,22 @@
                                 <div class="waves wave-3"></div>
                             </div>
                         </div>`;
-                        // image +=`<div class="waves-box"><a href="https://www.youtube.com/watch?v=iH3qXKPsnZM" class="iq-video popup-youtube"><i class="fa fa-play" aria-hidden="true"></i></a><div class="iq-waves"><div class="waves wave-1"></div><div class="waves wave-2"></div><div class="waves wave-3"></div></div></div>`;
                     }
-                    image += `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/${folderName}/${data[index].image}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px"/></a>`;
+                    var src = '';
+                    if(data[index].is_thumbnail == 'Yes'){
+                        src = `{{ URL::asset('assets/images/${folderName}/${data[index].thumbnail_url}')}}`;
+                    }else{
+                        src = `{{ URL::asset('assets/images/${folderName}/${data[index].image}')}}`;
+                    }
+                    image += `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src=${src}  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px"/></a>`;
                     el.querySelector(".serviceImageContainer").innerHTML = image;
                     setIframeModal();
-                    // el.querySelector(".text-container").innerHTML = data[index].description;
                 }
             });
         }
 
         // This function is used for setting all images project images into projects section
         function setProjectsData(data){
-            console.warn("data", data);
             document.querySelectorAll(".projectsItem").forEach((el, index) => {
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");

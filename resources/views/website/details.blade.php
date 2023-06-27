@@ -46,30 +46,38 @@
                                                     </div>
                                                     <p class="briefDescpContainer" id='partners'>{{isset($mapData->brief_descp) ? $mapData->brief_descp : 'N/A'}}</p>
                                                 </div>
-                                                <div class="row mt-2">
-                                                    <img src="{{ URL::asset('assets/images/project_service/'.$mapData->image_name)}}" width="100%" alt="work-images">
-                                                </div>
+                                                @if(isset($mapData->is_thumbnail) && $mapData->is_thumbnail == 'Yes')
+                                                {{-- For Adding scroller --}}
+                                                    <div class="row mt-2">
+                                                        <h1>SHUHAM</h1>
+                                                    </div>
+                                                @else
+                                                    <div class="row mt-2">
+                                                        <img src="{{ URL::asset('assets/images/project_service/'.$mapData->image_name)}}" width="100%" alt="work-images">
+                                                    </div>
+                                                @endif
                                                 @empty
                                             @endforelse
                                         </div>
 
                                         <div class="col-md-2 p-0 h-auto">
-                                            @forelse ($item['allMappedTypedData'] as $typeData)
-                                                <a href="#{{isset($typeData['anchor_keyword'])?$typeData['anchor_keyword']:''}}_{{$typeData['id']}}">
-                                                    <div class="col mb-3 h-auto" data-aos="zoom-in" data-aos-duration="3000">
-                                                        <div class="col text-center p-3 modalSideContainer">
-                                                            <div class="rightImgLogo-container">
-                                                                <img src="{{ URL::asset('assets/images/'.$sideImgFolName.'/'.$typeData['logo']) }}" width="90%" alt="Logo">
-                                                            </div>
-                                                            <div class="rightText-container">
-                                                                <p>{{isset($typeData['name'])?$typeData['name']:'N/A'}}</p>
+                                            @isset($item['allMappedTypedData'][0])
+                                                @forelse ($item['allMappedTypedData'][0] as $typeData)
+                                                    <a href="#{{isset($typeData['anchor_keyword'])?$typeData['anchor_keyword']:''}}_{{$typeData['id']}}">
+                                                        <div class="col mb-3 h-auto" data-aos="zoom-in" data-aos-duration="3000">
+                                                            <div class="col text-center p-3 modalSideContainer">
+                                                                <div class="rightImgLogo-container">
+                                                                    <img src="{{ URL::asset('assets/images/'.$sideImgFolName.'/'.$typeData['logo']) }}" width="90%" alt="Logo">
+                                                                </div>
+                                                                <div class="bottomTextContainer">
+                                                                    <span>{{isset($typeData['name'])?$typeData['name']:'N/A'}}</span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </a>
-                                            @empty
-
-                                            @endforelse
+                                                    </a>
+                                                @empty
+                                                @endforelse
+                                            @endisset
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +102,7 @@
                                 <div class="slider">
                                     <div class="carousalSecond owl-carousel">
                                         @forelse ($allTypeData as $row)
-                                            <a href="javascript:void(0)" onclick="getSpecificDetails('{{$type}}', {{$row->id}})" data-aos="zoom-in" data-aos-duration="3000">
+                                            <a href="javascript:void(0)" class="textBold" onclick="getSpecificDetails('{{$type}}', {{$row->id}})" data-aos="zoom-in" data-aos-duration="3000">
                                                 <div class="col-md text-center bottomContaineritems">
                                                     <div class="bottomImgLogoContainer">
                                                         <img src="{{ URL::asset('assets/images/'.$tableName.'/'.$row->logo) }}" width="70px" height="90px" alt="Logo">
