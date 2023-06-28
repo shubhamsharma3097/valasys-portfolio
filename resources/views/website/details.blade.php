@@ -35,35 +35,46 @@
                                             <div class="description text-center mb-4 mt-3" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
                                                 <p class="briefDescpContainer">{{isset($item['brief_descp']) ? $item['brief_descp'] : 'N/A'}}</p>
                                             </div>
-                                            <div class="row mt-2">
+                                            {{-- <div class="row mt-2">
                                                 <img src="{{ URL::asset('assets/images/'.$tableName.'/'.$item['image'])}}" width="100%" alt="work-images">
-                                            </div>
+                                            </div> --}}
+                                            @php 
+                                                $arr = [];
+                                            @endphp
                                             @forelse($item['allMappedData'] as $mapData)
-                                            <hr>
-                                                <div class="description text-center pb-3 pt-4" id="{{isset($mapData->anchor_keyword)?$mapData->anchor_keyword:''}}_{{$mapData->id}}">
+                                            @php 
+                                                $uniqueId = '';
+                                                if(!in_array($mapData->id, $arr)){
+                                                    array_push($arr, $mapData->id);
+                                                    $uniqueId = $mapData->id;
+                                                }
+                                            @endphp
+                                                <div class="row pt-4" id="{{isset($mapData->anchor_keyword)?$mapData->anchor_keyword:''}}_{{$uniqueId}}_{{$item['anchor_keyword']}}">
+                                                    @if(isset($mapData->is_thumbnail) && $mapData->is_thumbnail == 'Yes')
+                                                    {{-- For Adding scroller --}}
+                                                        <img src="{{ URL::asset('assets/images/project_service/'.$mapData->image_name)}}" width="100%" alt="work-images">
+                                                    @else
+                                                        <img src="{{ URL::asset('assets/images/project_service/'.$mapData->image_name)}}" width="100%" alt="work-images">
+                                                    @endif
+                                                </div>
+
+                                                <div class="description text-center pt-4">
+                                                    @if(isset($mapData->short_descp))
                                                     <div class="text-center">
                                                         <span class="leftNameContainer">{{isset($mapData->short_descp) ? $mapData->short_descp : 'N/A'}}</span>
                                                     </div>
-                                                    <p class="briefDescpContainer" id='partners'>{{isset($mapData->brief_descp) ? $mapData->brief_descp : 'N/A'}}</p>
+                                                    @endif
+                                                    <p class="briefDescpContainer" id='partners'>{{isset($mapData->brief_descp) ? $mapData->brief_descp : 'No Decription available.'}}</p>
                                                 </div>
-                                                @if(isset($mapData->is_thumbnail) && $mapData->is_thumbnail == 'Yes')
-                                                {{-- For Adding scroller --}}
-                                                    <div class="row mt-2">
-                                                        <h1>SHUHAM</h1>
-                                                    </div>
-                                                @else
-                                                    <div class="row mt-2">
-                                                        <img src="{{ URL::asset('assets/images/project_service/'.$mapData->image_name)}}" width="100%" alt="work-images">
-                                                    </div>
-                                                @endif
+
                                                 @empty
                                             @endforelse
                                         </div>
 
-                                        <div class="col-md-2 p-0 h-auto">
+                                        <div class="col-md-2 p-0 sideScroller">
                                             @isset($item['allMappedTypedData'][0])
                                                 @forelse ($item['allMappedTypedData'][0] as $typeData)
-                                                    <a href="#{{isset($typeData['anchor_keyword'])?$typeData['anchor_keyword']:''}}_{{$typeData['id']}}">
+                                                    <a href="#{{isset($typeData['anchor_keyword'])?$typeData['anchor_keyword']:''}}_{{$typeData['id']}}_{{$item['anchor_keyword']}}">
                                                         <div class="col mb-3 h-auto" data-aos="zoom-in" data-aos-duration="3000">
                                                             <div class="col text-center p-3 modalSideContainer">
                                                                 <div class="rightImgLogo-container">
@@ -95,6 +106,7 @@
                     </div>
 
 
+                    {{-- Second Carousal --}}
                     <div class="row mt-4 d-block bottomExploreContainer">
                         <span class="exploreSpan">Explore more</span>
                         <div class="col-md-10 mt-2 mainContainer">

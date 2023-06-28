@@ -56,50 +56,6 @@ class HomeController extends Controller
         }
     }
 
-    // This function is basically used for getting all details for specific project, related project, and services. and render all data in modal
-    public function specific_project_details($id){
-        // DB::enableQueryLog();
-        if(isset($id)){
-            $alldata = array();
-            $temp = array();
-            $allProjectsData = DB::table('projects')->select('id', 'name', 'anchor_keyword', 'logo', 'image', 'small_descp', 'brief_descp')->where('status','Active')->get();
-            if(count($allProjectsData) > 0){
-                foreach ($allProjectsData as $key => $value) {
-                    $temp['id'] = $value->id;
-                    $temp['name'] = $value->name;
-                    $temp['anchor_keyword'] = $value->anchor_keyword;
-                    $temp['logo'] = $value->logo;
-                    $temp['image'] = $value->image;
-                    $temp['small_descp'] = $value->small_descp;
-                    $temp['brief_descp'] = $value->brief_descp;
-                    $getAllMappedData = DB::table('images_descriptions_mapping as idm')
-                    ->select('idm.image_name', 'idm.short_descp', 'idm.brief_descp', 's.id as serviceID','s.anchor_keyword as service_anchor_keyword', 's.name as service_name', 's.service_logo', 's.service_image', 's.service_small_descp')
-                    ->leftjoin('services as s', 's.id', '=', 'idm.service_id')->where([['idm.project_id', $value->id],['idm.status','Active']])->get();
-                    $temp['allMappedData'] = array();
-                    $temp['allMappedServiceData'] = array();
-                    $tempService = array();
-                    if(count($getAllMappedData) > 0){
-                        $temp['allMappedData'] = $getAllMappedData;
-                        foreach ($getAllMappedData as $row) {
-                            if(!empty($row->service_name)){
-                                $tempService['id'] = $row->serviceID;
-                                $tempService['service_anchor_keyword'] = $row->service_anchor_keyword;
-                                $tempService['service_name'] = $row->service_name;
-                                $tempService['service_logo'] = $row->service_logo;
-                                $tempService['service_image'] = $row->service_image;
-                                $tempService['service_small_descp'] = $row->service_small_descp;
-                                array_push($temp['allMappedServiceData'], $tempService);
-                            }
-                        }
-                    }
-                    array_push($alldata, $temp);
-                }
-            }
-            $html = view('website.details', compact('alldata', 'id' ,'allProjectsData'))->render();
-            return $html;
-        }
-    }
-
     // This function is basically used for getting all details for specific services, related services, and project. and render all data in modal
     public function specific_details($type,$id){
         $tableName = $type."s";
@@ -123,13 +79,15 @@ class HomeController extends Controller
                     ->where([['idm.project_id', $value->id],['idm.status','Active'],['idm.category', 'Mapped']])->get();
                 }else{
                     $sideImgFolName = 'projects';
-                    // DB::enableQueryLog();
+                    DB::enableQueryLog();
                     $getAllMappedData = DB::table('images_descriptions_mapping as idm')
                     ->select('idm.image_name', 'idm.short_descp', 'idm.brief_descp', 'p.id','p.anchor_keyword', 'p.name as name', 'p.logo', 'p.image', 'p.small_descp', 'idm.is_thumbnail')
                     ->leftjoin('projects as p', 'p.id', '=', 'idm.project_id')
                     ->where([['idm.service_id', $value->id],['idm.status','Active'],['idm.category', 'Mapped']])->get();
                     // print_r(DB::getQueryLog());exit;
                 }
+                // echo "<pre>";
+                // print_r($getAllMappedData);
                 $temp['allMappedData'] = array();
                 $temp['allMappedTypedData'] = array();
                 $tempService = array();

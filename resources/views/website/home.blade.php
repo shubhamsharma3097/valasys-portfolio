@@ -1,30 +1,35 @@
 @extends('website.layouts.layout')
+{{-- <link rel='stylesheet' href='{{ URL::asset('assets/css/owl.carousel.min.css') }}'/> --}}
 @section('title', 'Valasys - Home')
 @section('content')
-
     <div class="container">
-        <div class="row m-2 awardsContainer p-3">
-            <div class="col-md-4">
+        <div class="row mt-5 awardsContainer">
+            <div class="col-md-2">
                 <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/globee.png') }}" alt="">
-                    {{-- <span>PROJECTS</span> --}}
+                    <img src="{{ URL::asset('assets/images/awards/globee.png') }}" width="150px" height="190px" alt="">
                 </div>
             </div>
-            <div class="col-md-4">
+             <div class="col-md-2">
                 <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/CIO.png') }}" alt="">
-                    {{-- <span>CATEGORIES</span> --}}
+                    <img src="{{ URL::asset('assets/images/awards/CIO.png') }}" width="150px" height="190px" alt="">
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/best-in-biz.png') }}" alt="">
-                    {{-- <span>CATEGORIES</span> --}}
+                    <img src="{{ URL::asset('assets/images/awards/best-in-biz.png') }}" width="150px" height="190px" alt="">
                 </div>
             </div>
-            {{-- <div class="col-md-5 m-3 customeMenus d-flex align-self-center justify-content-center"><span></span></div> --}}
+            <div class="col-md-2">
+                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/Stevies.png') }}" width="150px" height="190px" alt="">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/vega.png') }}" width="150px" height="190px" alt="">
+                </div>
+            </div>
         </div>
-
         <div class="d-flex align-item-center justify-content-center">
             <h1 class="CustomText">PORTFOLIO</h1>
         </div>
@@ -151,6 +156,7 @@
 @endsection
 @push('js')
 <script src="{{ URL::asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript">
 
         function submitServiceMenuForm(){
@@ -165,6 +171,33 @@
         }
 
         jQuery(document).ready(function () {
+            $('.carousalFirst').owlCarousel({
+                loop:true,
+                margin:5,
+                responsiveClass:true,
+                center:true,
+                nav:true,
+                navText:[
+                    "<i class='fa fa-angle-left'></i>",
+                    "<i class='fa fa-angle-right'></i>"
+                ],
+                dots:false,
+                responsive:{
+                    0:{
+                        items:1,
+                    },
+                    600:{
+                        items:3,
+                    },
+                    1000:{
+                        items:5,
+                    }
+                }
+            });
+
+
+
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -16,11 +16,6 @@ body {
     color: white;
 }
 
-.logIn_li:hover{
-    color: white;
-    background-color: red;
-}
-/*
 .navbar {
     overflow: hidden;
     background-color: #090B1A;
@@ -40,7 +35,7 @@ body {
     background-color: #6280FA;
     color: #fd7e14;
     border-radius: 9px;
-} */
+}
 
 .menuActive {
     background-color: #6280FA;
@@ -48,7 +43,7 @@ body {
 }
 .searchDiv {
     justify-content: center;
-    margin-top: 65px;
+    margin-top: 140px;
 }
 
 .logIn_li {
@@ -436,6 +431,15 @@ hr{
 }
 
 
+.sideScroller {
+    height: 565px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sideScroller::-webkit-scrollbar {
+    width: 6px;               /* width of the entire scrollbar */
+}
 
 
 .footer {
