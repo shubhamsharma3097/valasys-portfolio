@@ -17,5 +17,5 @@ Agar main slider slide hua to child slider bhi slide hoga for excluding active p
 Youtube link is pending to implement backend.
 Modal transparent karna bacha hai
 
-
+Website images strech in sercvicwe page
 https://itsupportvalasys-my.sharepoint.com/:x:/g/personal/alok_valasys_com/ERNr4D2ukNxMhiFI3JTCkKYB5rqSi5NzP8pkiL12FCkCYQ?rtime=ufeCbkp320g

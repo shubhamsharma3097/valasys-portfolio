@@ -30,8 +30,11 @@
             <div class="row justify-content-center mt-3 projectsImgs">
                 @forelse ($getAllProjects as $item)
                     <div class="col-md-3 projectItems">
-                        <div class="col-md d-flex align-item-center" data-aos="zoom-in" data-aos-duration="1000" onclick="getSpecificDetails('project',{{$item->id}})">
-                            <img src="{{ URL::asset('assets/images/'.$folderName.'/'.$item->logo) }}" width="100%" alt="Logo">
+                        {{-- <div class="col-md d-flex align-item-center text-center" data-aos="zoom-in" data-aos-duration="1000" onclick="getSpecificDetails('project',{{$item->id}})" style="height: 210px;">
+                        </div> --}}
+                        <div class="col-md p-2 mb-4 projectsItem" data-aos="zoom-in" data-aos-duration="1000" onclick="getSpecificDetails('project',{{$item->id}})">
+                            <img src="{{ URL::asset('assets/images/'.$folderName.'/'.$item->logo) }}" width="150px" height="150px" alt="Logo">
+                            {{-- <div class="projectImageContainer"></div> --}}
                         </div>
                     </div>
                     @empty

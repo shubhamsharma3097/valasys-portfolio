@@ -24,7 +24,11 @@
                 @forelse ($servicesData as $item)
                     <div class="col-md-4 p-2 w-100 serviceImgDiv">
                         <div class="serviceItem serviceBtn loaded" onclick="getSpecificDetails('service',{{$item->id}})">
-                            <img src="{{ URL::asset('assets/images/'.$serviceImgFolName.'/'.$item->image) }}" width="100%" height="100%" alt="Logo">
+                            @if(isset($item->is_thumbnail) && $item->is_thumbnail == 'Yes')
+                                <img src="{{ URL::asset('assets/images/'.$serviceImgFolName.'/'.$item->thumbnail_url) }}" width="100%" height="100%" alt="Logo">
+                            @else
+                                <img src="{{ URL::asset('assets/images/'.$serviceImgFolName.'/'.$item->image) }}" width="100%" height="100%" alt="Logo">
+                            @endif
                         </div>
                     </div>
                 @empty
@@ -98,7 +102,26 @@
                     data.forEach((ele)=>{
                         html += `<div class="col-md-4 p-2 w-100 serviceImgDiv">`;
                         html += `<div class="serviceItem loaded" onclick="getSpecificDetails('service','${ele.id}')">`;
-                        html += `<img src="{{ URL::asset('assets/images/${folderName}/${ele.image}') }}" width="100%" height="100%" alt="Logo">`;
+                        if(ele.is_video == 'Yes'){
+                            var href = data.video_url;
+                            html += `<div class="waves-box">
+                                <a href=${href} class="iq-video popup-youtube">
+                                    <i class="fa fa-play" aria-hidden="true"></i>
+                                </a>
+                                <div class="iq-waves">
+                                    <div class="waves wave-1"></div>
+                                    <div class="waves wave-2"></div>
+                                    <div class="waves wave-3"></div>
+                                </div>
+                            </div>`;
+                        }
+                        var src = '';
+                        if(ele.is_thumbnail == 'Yes'){
+                            src = `{{ URL::asset('assets/images/${folderName}/${ele.thumbnail_url}')}}`;
+                        }else{
+                            src = `{{ URL::asset('assets/images/${folderName}/${ele.image}')}}`;
+                        }
+                        html += `<img src=${src} width="100%" height="100%" alt="Logo">`;
                         html += `</div></div>`;
                     });
                 html += `</div>`;

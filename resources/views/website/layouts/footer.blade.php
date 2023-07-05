@@ -73,7 +73,6 @@
  {{-- <script src='{{ URL::asset('assets/js/owl.carousel.min.js') }}'></script> --}}
  <!-- Custom JavaScript -->
  {{-- <script src="{{ URL::asset('assets/js/custom.js') }}"></script> --}}
-</body>
 <script>
     jQuery('#back-to-top').fadeOut();
     jQuery(window).on("scroll", function() {

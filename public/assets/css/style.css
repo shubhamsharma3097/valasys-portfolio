@@ -2,7 +2,55 @@ body {
     background-color: #090B1A;
     color: #FEFEFF;
     min-height: 100vh;
+    position: relative;
 }
+
+/* Background Animation */
+/* 
+.mainBodyContainer{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.bubbles{
+    position: relative;
+    display: flex;
+}
+.bubbles span{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background: aqua;
+    margin: 0 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #4fc3dc44,
+    0 0 50px aqua,
+    0 0 100px aqua;
+    animation: animate 15s linear infinite;
+    animation-duration: calc(125s / var(--i));
+}
+.bubbles span:nth-child(even){
+    background: #eb8a0b;
+    box-shadow: 0 0 0 10px #ff970544,
+    0 0 50px #eb8a0b,
+    0 0 100px #eb8a0b;
+    animation: animate 15s linear infinite;
+    animation-duration: calc(125s / var(--i));
+}
+
+@keyframes animate{
+    0%{
+        transform: translateY(100vh) scale(0);
+    }
+    100%{
+        transform: translateY(-10vh) scale(1);
+    }
+} */
+
+
+
+
 .navbar-nav li a{
     text-decoration: none;
 }
@@ -90,7 +138,7 @@ body {
 
 .customeMenus{
     /* background-color: #171C3C; */
-    height: 200px;
+    height: 155px;
     border-radius: 7px;
     font-family: 'Gilroy', sans-serif;
     margin-bottom: 15px;
@@ -223,9 +271,9 @@ body {
     margin: 0 10px;
 }
 
-.projectItems{
+/* .projectItems{
     padding: 14px;
-}
+} */
 
 /* Projects Section End- */
 
@@ -348,7 +396,7 @@ ul li {
         font-weight: bold;
     }
     .bottomContaineritems{
-        padding: 0;
+        padding: 4px;
         background-color: #171C3C;
         height: 150px;
         border-radius: 10px;

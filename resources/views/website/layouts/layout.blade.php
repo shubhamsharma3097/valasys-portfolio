@@ -14,8 +14,6 @@
       <link rel="stylesheet" href="{{ URL::asset('assets/css/font-awesome.min.css') }}"/>
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap.min.css') }}"/>
-
-      <link rel="stylesheet" href="{{ URL::asset('assets/css/magnific-popup.css') }}"/>
       <!-- Style CSS -->
       <link rel='stylesheet' href='{{ URL::asset('assets/css/style.css') }}'/>
       <!-- OWL Carousal CSS -->
@@ -30,9 +28,58 @@
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
    </head>
    <body>
-        @include('website.layouts.header')
-            @yield('content')
-        @include('website.layouts.footer')
-        @stack('js')
+      {{-- <div class="mainBodyContainer">
+         <div class="bubbles">
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:28;"></span>
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:28;"></span>
+            
+            <div class="bodyContent" style="position: absolute"> --}}
+               @include('website.layouts.header')
+
+               @yield('content')
+               @include('website.layouts.footer')
+               @stack('js')
+            {{-- </div>
+
+         </div>
+      </div> --}}
    </body>
 </html>

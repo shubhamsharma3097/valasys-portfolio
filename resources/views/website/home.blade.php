@@ -1,32 +1,32 @@
 @extends('website.layouts.layout')
-{{-- <link rel='stylesheet' href='{{ URL::asset('assets/css/owl.carousel.min.css') }}'/> --}}
 @section('title', 'Valasys - Home')
 @section('content')
+<link rel="stylesheet" href="{{ URL::asset('assets/css/magnific-popup.css') }}"/>
     <div class="container">
         <div class="row mt-5 awardsContainer">
             <div class="col-md-2">
-                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/globee.png') }}" width="150px" height="190px" alt="">
+                <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/globee.png') }}" width="150px" height="150px" alt="">
                 </div>
             </div>
              <div class="col-md-2">
-                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/CIO.png') }}" width="150px" height="190px" alt="">
+                <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/CIO.png') }}" width="150px" height="150px" alt="">
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/best-in-biz.png') }}" width="150px" height="190px" alt="">
+                <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/best-in-biz.png') }}" width="150px" height="150px" alt="">
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/Stevies.png') }}" width="150px" height="190px" alt="">
+                <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/Stevies.png') }}" width="150px" height="150px" alt="">
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="customeMenus d-flex align-self-center justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/vega.png') }}" width="150px" height="190px" alt="">
+                <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
+                    <img src="{{ URL::asset('assets/images/awards/vega.png') }}" width="150px" height="150px" alt="">
                 </div>
             </div>
         </div>
@@ -116,6 +116,7 @@
 
         <div class="text-center">
             <h1 class="CustomText">PROJECTS</h1>
+            <a class="popup-youtube" href="https://www.youtube.com/shorts/tciQMcmUA0Q">Open YouTube video</a>
         </div>
 
         <div class="row projectsLogos m-3">
@@ -155,22 +156,23 @@
     <div id="modalContent" class="m-3"></div>
 @endsection
 @push('js')
-<script src="{{ URL::asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+{{-- <script src="{{ URL::asset('assets/js/jquery.magnific-popup.min.js') }}"></script> --}}
 <script src="{{ URL::asset('assets/js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript">
 
-        function submitServiceMenuForm(){
-            var id = $('#serviceMenuId').val();
-            if(id !=''){
-                var baseUrl = "{{ URL('/services') }}" + "/" + id;
-            }else{
-                var baseUrl = "{{ URL('/services') }}";
-            }
-            $("#serviceMenusForm").attr("action",baseUrl);
-            $('#serviceMenusForm').submit();
-        }
-
         jQuery(document).ready(function () {
+
+            $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+                disableOn: 700,
+                type: 'iframe',
+                mainClass: 'mfp-fade',
+                removalDelay: 160,
+                preloader: false,
+                fixedContentPos: false
+            });
+
+
             $('.carousalFirst').owlCarousel({
                 loop:true,
                 margin:5,
@@ -195,14 +197,12 @@
                 }
             });
 
-
-
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
             // For Activating Service menu btn and calling function to get service section data when user clicks on specific menu
             var header = document.getElementById("serviceMenusID");
             var btns = header.getElementsByClassName("colCentered");
@@ -221,7 +221,7 @@
                 interval: false,
             });
             
-            // $('#search').val('');    
+            // $('#search').val('');
             getServiceData();
         });
 
@@ -305,13 +305,13 @@
 
         // This is function is used for opening iframe modal using plugins after the service images initialize
         function setIframeModal(){
-            $('.popup-youtube').magnificPopup({
-                disableOn: 700,
+            $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+                // disableOn: 700,
                 type: 'iframe',
                 mainClass: 'mfp-fade',
                 removalDelay: 160,
                 preloader: false,
-                fixedContentPos: true
+                fixedContentPos: false
             });
         }
 
@@ -335,6 +335,17 @@
                     }
                 });
             }
+        }
+
+        function submitServiceMenuForm(){
+            var id = $('#serviceMenuId').val();
+            if(id !=''){
+                var baseUrl = "{{ URL('/services') }}" + "/" + id;
+            }else{
+                var baseUrl = "{{ URL('/services') }}";
+            }
+            $("#serviceMenusForm").attr("action",baseUrl);
+            $('#serviceMenusForm').submit();
         }
 
     </script>
