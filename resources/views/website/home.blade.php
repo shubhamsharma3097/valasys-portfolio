@@ -1,39 +1,37 @@
 @extends('website.layouts.layout')
 @section('title', 'Valasys - Home')
 @section('content')
-<link rel="stylesheet" href="{{ URL::asset('assets/css/magnific-popup.css') }}"/>
     <div class="container">
-        <div class="row mt-5 awardsContainer">
+        <div class="row awardsContainer" style="margin-top: 180px;" id="top">
             <div class="col-md-2">
                 <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/globee.png') }}" width="150px" height="150px" alt="">
+                    <img src="{{ URL::asset('assets/images/awards/globee.png') }}" width="150px" height="auto" alt="">
                 </div>
             </div>
              <div class="col-md-2">
                 <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/CIO.png') }}" width="150px" height="150px" alt="">
+                    <img src="{{ URL::asset('assets/images/awards/CIO.png') }}" width="150px" height="auto" alt="">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/best-in-biz.png') }}" width="150px" height="150px" alt="">
+                    <img src="{{ URL::asset('assets/images/awards/best-in-biz.png') }}" width="150px" height="auto" alt="">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/Stevies.png') }}" width="150px" height="150px" alt="">
+                    <img src="{{ URL::asset('assets/images/awards/Stevies.png') }}" width="150px" height="auto" alt="">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="customeMenus d-flex justify-content-center" data-aos="flip-left" data-aos-duration="1000">
-                    <img src="{{ URL::asset('assets/images/awards/vega.png') }}" width="150px" height="150px" alt="">
+                    <img src="{{ URL::asset('assets/images/awards/vega.png') }}" width="150px" height="auto" alt="">
                 </div>
             </div>
         </div>
         <div class="d-flex align-item-center justify-content-center">
             <h1 class="CustomText">PORTFOLIO</h1>
         </div>
-
         <form name="serviceMenus" id="serviceMenusForm" method="get">
             <div class="text-center serviceMenus mb-1">
                 <div class="row" id="serviceMenusID" data-aos="zoom-in">
@@ -42,6 +40,7 @@
                         @forelse($getAllServices as $row)
                             <li class="colCentered" id="{{$row->anchor_keyword}}-{{$row->id}}">{{ $row->name }}</li>
                         @empty
+                            <li><div class="text-center"><h3>No Record Found!</h3></div></li>
                         @endforelse
                     </ul>
                 </div>
@@ -109,14 +108,13 @@
 
             <div class="text-center m-4" data-aos="zoom-out" data-aos-duration="1000">
                 <input type="hidden" id="serviceMenuId">
-                <button type="button" onclick="submitServiceMenuForm()" class="btn orange serviceBtn">View All</button>
-                <!-- <a href="{{ URL('/services') }}"><button type="submit" class="btn orange">View All</button></a> -->
+                {{-- <button type="button" onclick="submitServiceMenuForm()" class="btn orange serviceBtn">View All</button> --}}
+                <a class="iq-button d-inline-block" href="javascript:void(0)" onclick="submitServiceMenuForm()"><span>View All</span><em></em></a>
             </div>
         </form>
 
         <div class="text-center">
             <h1 class="CustomText">PROJECTS</h1>
-            <a class="popup-youtube" href="https://www.youtube.com/shorts/tciQMcmUA0Q">Open YouTube video</a>
         </div>
 
         <div class="row projectsLogos m-3">
@@ -148,7 +146,8 @@
         </div>
 
         <div class="text-center m-4" data-aos="zoom-in" data-aos-duration="1000">
-            <a href=" {{ URL('/projects') }} "><button type="button" class="btn orange serviceBtn">View All</button></a>
+            {{-- <a href=" {{ URL('/projects') }} "><button type="button" class="btn orange serviceBtn">View All</button></a> --}}
+            <a class="iq-button d-inline-block" href="{{ URL('/projects') }}"><span>View All</span><em></em></a>
         </div>
 
     </div>
@@ -156,47 +155,10 @@
     <div id="modalContent" class="m-3"></div>
 @endsection
 @push('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-{{-- <script src="{{ URL::asset('assets/js/jquery.magnific-popup.min.js') }}"></script> --}}
-<script src="{{ URL::asset('assets/js/owl.carousel.min.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js" integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
-
         jQuery(document).ready(function () {
-
-            $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-                disableOn: 700,
-                type: 'iframe',
-                mainClass: 'mfp-fade',
-                removalDelay: 160,
-                preloader: false,
-                fixedContentPos: false
-            });
-
-
-            $('.carousalFirst').owlCarousel({
-                loop:true,
-                margin:5,
-                responsiveClass:true,
-                center:true,
-                nav:true,
-                navText:[
-                    "<i class='fa fa-angle-left'></i>",
-                    "<i class='fa fa-angle-right'></i>"
-                ],
-                dots:false,
-                responsive:{
-                    0:{
-                        items:1,
-                    },
-                    600:{
-                        items:3,
-                    },
-                    1000:{
-                        items:5,
-                    }
-                }
-            });
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -204,24 +166,18 @@
             });
 
             // For Activating Service menu btn and calling function to get service section data when user clicks on specific menu
-            var header = document.getElementById("serviceMenusID");
-            var btns = header.getElementsByClassName("colCentered");
+            var container = document.getElementById("serviceMenusID");
+            var btns = container.getElementsByClassName("colCentered");
             for (var i = 0; i < btns.length; i++) {
                 btns[i].addEventListener("click", function() {
                     var current = document.getElementsByClassName("active");
                     current[0].className = current[0].className.replace(" active", "");
                     this.className += " active";
                     var serviceID = this.id.split('-');
-                    console.warn("this.id",serviceID);
                     $('#serviceMenuId').val(serviceID[1]);
                     getServiceData(serviceID);
                 });
             }
-            $('.carousel').carousel({
-                interval: false,
-            });
-            
-            // $('#search').val('');
             getServiceData();
         });
 
@@ -229,7 +185,7 @@
         function getServiceData(value){
             var filterData = null;
             if(value===undefined){
-                var filterData = $('#search').val().trim();
+                // var filterData = $('#search').val().trim();
                 if(filterData == '' || filterData == null){
                     filterData = ['all'];
                 }
@@ -238,7 +194,7 @@
             }
             $.ajax({
                 type:'POST',
-                url:"{{ route('ajaxRequest') }}",
+                url:"{{ route('getServiceData') }}",
                 data:{filterData:filterData},
                 beforeSend: function(){
                     document.querySelectorAll(".serviceItem").forEach((el, index) => {
@@ -264,10 +220,10 @@
             document.querySelectorAll(".serviceItem").forEach((el, index) => {
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");
-                    var image = '';
+                    var serviceImage = '';
                     if(data[index].is_video == 'Yes'){
                         var href = data[index].video_url;
-                        image += `<div class="waves-box">
+                        serviceImage += `<div class="waves-box">
                             <a href=${href} class="iq-video popup-youtube">
                                 <i class="fa fa-play" aria-hidden="true"></i>
                             </a>
@@ -277,15 +233,16 @@
                                 <div class="waves wave-3"></div>
                             </div>
                         </div>`;
+                        serviceImage += `<img class="checkImage" src={{ URL::asset('assets/images/${folderName}/${data[index].thumbnail_url}')}}  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px"/>`;
                     }
-                    var src = '';
-                    if(data[index].is_thumbnail == 'Yes'){
-                        src = `{{ URL::asset('assets/images/${folderName}/${data[index].thumbnail_url}')}}`;
+                    else if(data[index].is_thumbnail == 'Yes'){
+                        // image = `{{ URL::asset('assets/images/${folderName}/${data[index].thumbnail_url}')}}`;
+                        serviceImage += `<img class="checkImage" src={{ URL::asset('assets/images/${folderName}/${data[index].thumbnail_url}')}}  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px" onclick="getSpecificDetails('service','${data[index].id}')"/>`;
                     }else{
-                        src = `{{ URL::asset('assets/images/${folderName}/${data[index].image}')}}`;
+                        // image = `{{ URL::asset('assets/images/${folderName}/${data[index].image}')}}`;
+                        serviceImage += `<img class="checkImage" src={{ URL::asset('assets/images/${folderName}/${data[index].image}')}}  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px" onclick="getSpecificDetails('service','${data[index].id}')"/>`;
                     }
-                    image += `<a href="javascript:void(0)" onclick="getSpecificDetails('service','${data[index].id}')"><img class="checkImage" src=${src}  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="100%" style="border-radius:10px"/></a>`;
-                    el.querySelector(".serviceImageContainer").innerHTML = image;
+                    el.querySelector(".serviceImageContainer").innerHTML = serviceImage;
                     setIframeModal();
                 }
             });
@@ -296,22 +253,9 @@
             document.querySelectorAll(".projectsItem").forEach((el, index) => {
                 if (data[index]) {
                     el.className = el.className.replace(" empty", " loaded");
-                    var image = `<a href="javascript:void(0)" onclick="getSpecificDetails('project', '${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/projects/${data[index].logo}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="100%" height="150px"/></a>`;
+                    var image = `<a href="javascript:void(0)" onclick="getSpecificDetails('project', '${data[index].id}')"><img class="checkImage" src="{{ URL::asset('assets/images/projects/${data[index].logo}')}}"  onerror="javascript:this.src='{{ URL::asset("assets/images/default_large.png")}}'" width="150px" height="auto"/></a>`;
                     el.querySelector(".projectImageContainer").innerHTML = image;
-                    // el.querySelector(".text-container").innerHTML = data[index].description;
                 }
-            });
-        }
-
-        // This is function is used for opening iframe modal using plugins after the service images initialize
-        function setIframeModal(){
-            $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-                // disableOn: 700,
-                type: 'iframe',
-                mainClass: 'mfp-fade',
-                removalDelay: 160,
-                preloader: false,
-                fixedContentPos: false
             });
         }
 
@@ -331,7 +275,6 @@
                     success: function(response){
                         $('#modalContent').html(response);
                         $('#myModal').modal('show');
-                        console.warn(response);
                     }
                 });
             }

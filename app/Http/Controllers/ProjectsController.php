@@ -13,8 +13,4 @@ class ProjectsController extends Controller
         $folderName = 'projects';
         return view('website.projects',compact('companyData', 'getAllProjects', 'folderName'));
     }
-
-    public function projectDetails(Request $request){
-        print_r($_POST);exit;
-    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Projects;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,7 @@ use App\Models\Services;
 class HomeController extends Controller
 {
 
+    // This function used for initialising Services Projects data on page reloads
     public function index(){
         try {
             $getAllServices = DB::table('services')->select('id', 'name', 'anchor_keyword')->where('status','Active')->limit(5)->get()->toArray();
@@ -22,15 +24,14 @@ class HomeController extends Controller
             }
         } catch (QueryException $e) {
             if ($e->getCode() == 2002) {
-                echo "Database is not connected";exit;
+                echo "<center><h2>Database is not connected</h2></center>";exit;
             }
         }
     }
 
-    public function ajaxRequest(Request $request){
+    public function getServiceData(Request $request){
         try {
             $filterData = $request->input('filterData');
-            // print_r($filterData);exit;
             $filterData = $filterData[0];
             if(!empty($filterData)) {
                 $projectsData = DB::table('projects')->select('id', 'name as project_name', 'anchor_keyword', 'logo', 'image', 'small_descp')->where('status','Active')->inRandomOrder()->get();
@@ -42,10 +43,10 @@ class HomeController extends Controller
                     if($filterData != 'all'){
                         $query->where('s.anchor_keyword', $filterData);
                     }
+                // $servicesData = $query->inRandomOrder();
                 $servicesData = $query->get();
                 $serviceImgFolName = 'project_service';
                 return response()->json(['result' => true, 'data' => compact('servicesData', 'projectsData', 'serviceImgFolName')], 200);
-
             }else{
                 return response()->json(['status' => 500, 'result' => false, 'data' =>'', 'message' => "Something Went Wrong"]);
             }
@@ -61,6 +62,7 @@ class HomeController extends Controller
         $tableName = $type."s";
         $alldata = array();
         $temp = array();
+        DB::enableQueryLog();
         $allTypeData = DB::table($tableName)->select('id', 'name', 'anchor_keyword', 'logo', 'image', 'small_descp', 'brief_descp')->where('status','Active')->get();
         if(count($allTypeData) > 0){
             foreach ($allTypeData as $key => $value) {
@@ -83,7 +85,7 @@ class HomeController extends Controller
                     $getAllMappedData = DB::table('images_descriptions_mapping as idm')
                     ->select('idm.image_name', 'idm.short_descp', 'idm.brief_descp', 'p.id','p.anchor_keyword', 'p.name as name', 'p.logo', 'p.image', 'p.small_descp', 'idm.is_thumbnail')
                     ->leftjoin('projects as p', 'p.id', '=', 'idm.project_id')
-                    ->where([['idm.service_id', $value->id],['idm.status','Active'],['idm.category', 'Mapped']])->get();
+                    ->where([['idm.service_id', $value->id],['idm.status','Active'],['idm.category', 'Mapped'],['p.status','Active']])->get();
                     // print_r(DB::getQueryLog());exit;
                 }
                 // echo "<pre>";
@@ -113,5 +115,4 @@ class HomeController extends Controller
         $html = view('website.details', compact('alldata', 'id' , 'allTypeData', 'tableName', 'type', 'sideImgFolName'))->render();
         return $html;
     }
-
 }

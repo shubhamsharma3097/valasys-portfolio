@@ -22,7 +22,7 @@ use App\Http\Controllers\ServicesController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::post('ajaxRequest', [HomeController::class, 'ajaxRequest'])->name('ajaxRequest');
+Route::post('getServiceData', [HomeController::class, 'getServiceData'])->name('getServiceData');
 
 Route::get('projects', [ProjectsController::class, 'index'])->name('projects');
 

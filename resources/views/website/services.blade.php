@@ -6,7 +6,6 @@
         <div class="text-center">
             <h1 class="CustomText">SERVICES</h1>
         </div>
-        
         <div class="text-center serviceMenus mb-1">
             <div class="row" id="serviceMenusID">
                 <ul class="serviceMenusUl">
@@ -18,16 +17,27 @@
                 </ul>
             </div>
         </div>
-
         <div class="servicesContainer serviceScroller">
             <div class="row justify-content-center p-3">
                 @forelse ($servicesData as $item)
                     <div class="col-md-4 p-2 w-100 serviceImgDiv">
-                        <div class="serviceItem serviceBtn loaded" onclick="getSpecificDetails('service',{{$item->id}})">
-                            @if(isset($item->is_thumbnail) && $item->is_thumbnail == 'Yes')
+                        <div class="serviceItem serviceBtn loaded">
+                            @if(isset($item->is_video) && $item->is_video == 'Yes')
+                                <div class="waves-box">
+                                    <a href={{$item->video_url}} class="iq-video popup-youtube">
+                                        <i class="fa fa-play" aria-hidden="true"></i>
+                                    </a>
+                                    <div class="iq-waves">
+                                        <div class="waves wave-1"></div>
+                                        <div class="waves wave-2"></div>
+                                        <div class="waves wave-3"></div>
+                                    </div>
+                                </div>
                                 <img src="{{ URL::asset('assets/images/'.$serviceImgFolName.'/'.$item->thumbnail_url) }}" width="100%" height="100%" alt="Logo">
+                            @elseif(isset($item->is_thumbnail) && $item->is_thumbnail == 'Yes')
+                                <img src="{{ URL::asset('assets/images/'.$serviceImgFolName.'/'.$item->thumbnail_url) }}" width="100%" height="100%" alt="Logo" onclick="getSpecificDetails('service',{{$item->id}})">
                             @else
-                                <img src="{{ URL::asset('assets/images/'.$serviceImgFolName.'/'.$item->image) }}" width="100%" height="100%" alt="Logo">
+                                <img src="{{ URL::asset('assets/images/'.$serviceImgFolName.'/'.$item->image) }}" width="100%" height="100%" alt="Logo" onclick="getSpecificDetails('service',{{$item->id}})">
                             @endif
                         </div>
                     </div>
@@ -41,9 +51,6 @@
             </div>
         </div>
         <div id="modalContent" class="m-3"></div>
-        {{-- <section id="loading">
-            <div id="loading-content"></div>
-        </section> --}}
     </div>
 
 @endsection
@@ -59,7 +66,6 @@
                     current[0].className = current[0].className.replace(" active", "");
                     this.className += " active";
                     var serviceID = this.id.split('-');
-                    console.warn("this.id",serviceID);
                     getServiceDetailes(serviceID)
                 });
             }
@@ -74,12 +80,10 @@
         function getServiceDetailes(filterData){
             $.ajax({
                 type:'POST',
-                url:"{{ route('ajaxRequest') }}",
+                url:"{{ route('getServiceData') }}",
                 data:{filterData:filterData},
                 beforeSend: function(){
                     document.querySelector('.servicesContainer').innerHTML = "";
-                    // document.querySelector('#loading').classList.add('loading');
-                    // document.querySelector('#loading-content').classList.add('loading-content');
                 },
                 complete: function(){
                 },
@@ -89,8 +93,6 @@
                     }else{
                         console.warn(response.message);
                     }
-                    // document.querySelector('#loading').classList.remove('loading');
-                    // document.querySelector('#loading-content').classList.remove('loading-content');
                 }
             });
         }
@@ -101,9 +103,9 @@
                 html += `<div class="row justify-content-center p-3">`;
                     data.forEach((ele)=>{
                         html += `<div class="col-md-4 p-2 w-100 serviceImgDiv">`;
-                        html += `<div class="serviceItem loaded" onclick="getSpecificDetails('service','${ele.id}')">`;
+                        html += `<div class="serviceItem loaded">`;
                         if(ele.is_video == 'Yes'){
-                            var href = data.video_url;
+                            var href = ele.video_url;
                             html += `<div class="waves-box">
                                 <a href=${href} class="iq-video popup-youtube">
                                     <i class="fa fa-play" aria-hidden="true"></i>
@@ -114,14 +116,12 @@
                                     <div class="waves wave-3"></div>
                                 </div>
                             </div>`;
-                        }
-                        var src = '';
-                        if(ele.is_thumbnail == 'Yes'){
-                            src = `{{ URL::asset('assets/images/${folderName}/${ele.thumbnail_url}')}}`;
+                            html += `<img src={{ URL::asset('assets/images/${folderName}/${ele.thumbnail_url}')}} width="100%" height="100%" alt="Logo">`;
+                        }else if(ele.is_thumbnail == 'Yes'){
+                            html += `<img src={{ URL::asset('assets/images/${folderName}/${ele.thumbnail_url}')}} width="100%" height="100%" alt="Logo" onclick="getSpecificDetails('service','${ele.id}')">`;
                         }else{
-                            src = `{{ URL::asset('assets/images/${folderName}/${ele.image}')}}`;
+                            html += `<img src={{ URL::asset('assets/images/${folderName}/${ele.image}')}} width="100%" height="100%" alt="Logo" onclick="getSpecificDetails('service','${ele.id}')">`;
                         }
-                        html += `<img src=${src} width="100%" height="100%" alt="Logo">`;
                         html += `</div></div>`;
                     });
                 html += `</div>`;
@@ -129,6 +129,7 @@
                 html += `<div class="row mt-5"><div class="col text-center"><h3>No Record Found</h3></div></div></div>`;
             }
             document.querySelector('.servicesContainer').innerHTML = html;
+            setIframeModal();
         }
 
         function getSpecificDetails(type, id){
@@ -146,7 +147,6 @@
                     success: function(response){
                         $('#modalContent').html(response);
                         $('#myModal').modal('show');
-                        console.warn(response);
                     }
                 });
             }

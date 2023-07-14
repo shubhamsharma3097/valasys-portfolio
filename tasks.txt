@@ -19,3 +19,9 @@ Modal transparent karna bacha hai
 
 Website images strech in sercvicwe page
 https://itsupportvalasys-my.sharepoint.com/:x:/g/personal/alok_valasys_com/ERNr4D2ukNxMhiFI3JTCkKYB5rqSi5NzP8pkiL12FCkCYQ?rtime=ufeCbkp320g
+
+
+
+===========before deployement===========
+
+Remove anchor from logo in header

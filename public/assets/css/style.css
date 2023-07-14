@@ -1,3 +1,27 @@
+.iq-button { cursor: pointer; background-color: #f0831d; color: #ffffff; line-height: 2; position: relative; z-index: 0; overflow: hidden; display: inline-block; padding: 15px 80px 15px 30px; font-size: 16px; border-radius: 4px; text-transform: capitalize; }
+.iq-button span { color: #fff; display: block; text-transform: capitalize; transform: scaleX(0.9); letter-spacing: 3px; transform-origin: center left; transition: color 0.3s ease; position: relative; z-index: 1; font-size: 16px; font-family: 'Bebas Neue', cursive; }
+.iq-button em { position: absolute; height: 1px; background: #fff; width: 47%; right: 30px; top: 46%; transform: scaleX(0.25); transform-origin: center right; transition: all 0.3s ease; z-index: 1; }
+.iq-button:before, .iq-button:after {z-index: -1; content: ''; background: #0b0b0b; height: 50%; width: 0; position: absolute; transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86); }
+.iq-button:before { top: 0; left: 0; right: auto; }
+.iq-button:after { bottom: 0; right: 0; left: auto; }
+.iq-button:hover:before { width: 100%; right: 0; left: auto; }
+.iq-button:hover:after { width: 100%; left: 0; right: auto; }
+.iq-button:hover span { color: #ffffff; }
+.iq-button:hover em { background: #ffffff; transform: scaleX(0.4); }
+
+/*Button-radius*/
+.iq-button.btn-radius { border-bottom-right-radius: 25px }
+
+/*button with Outline*/
+.iq-btn-outline { color: #0b0b0b; background: transparent; border: 2px solid #0b0b0b; }
+.iq-button.iq-btn-link, .iq-btn-link { font-weight: 500; color: #0b0b0b; background: transparent; padding: 0; }
+
+/*button Hover Effect */
+.iq-button:hover, .iq-button:focus { color: #ffffff; background: #0b0b0b; text-decoration: inherit; }
+.iq-btn-outline:hover, .iq-btn-outline:focus { border-color: #0b0b0b; color: #ffffff; }
+.iq-btn-link:hover, .iq-btn-link:focus { color: #0b0b0b; background: transparent; }
+
+
 body {
     background-color: #090B1A;
     color: #FEFEFF;
@@ -5,52 +29,24 @@ body {
     position: relative;
 }
 
-/* Background Animation */
-/* 
-.mainBodyContainer{
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-.bubbles{
-    position: relative;
-    display: flex;
-}
-.bubbles span{
-    position: relative;
-    width: 25px;
-    height: 25px;
-    background: aqua;
-    margin: 0 4px;
-    border-radius: 50%;
-    box-shadow: 0 0 0 10px #4fc3dc44,
-    0 0 50px aqua,
-    0 0 100px aqua;
-    animation: animate 15s linear infinite;
-    animation-duration: calc(125s / var(--i));
-}
-.bubbles span:nth-child(even){
-    background: #eb8a0b;
-    box-shadow: 0 0 0 10px #ff970544,
-    0 0 50px #eb8a0b,
-    0 0 100px #eb8a0b;
-    animation: animate 15s linear infinite;
-    animation-duration: calc(125s / var(--i));
+
+.vert .carousel-item-next.carousel-item-left,
+.vert .carousel-item-prev.carousel-item-right {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
 }
 
-@keyframes animate{
-    0%{
-        transform: translateY(100vh) scale(0);
-    }
-    100%{
-        transform: translateY(-10vh) scale(1);
-    }
-} */
+.vert .carousel-item-next,
+.vert .active.carousel-item-right {
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100% 0);
+}
 
-
-
-
+.vert .carousel-item-prev,
+.vert .active.carousel-item-left {
+-webkit-transform: translate3d(0,-100%, 0);
+        transform: translate3d(0,-100%, 0);
+}
 .navbar-nav li a{
     text-decoration: none;
 }
@@ -122,6 +118,7 @@ body {
     }
 
 /* Awards Container CSS */
+
 
 /* Button Effect */
 
@@ -280,7 +277,7 @@ body {
 /* Projects Section End */
 
 
-ul li {
+.serviceMenusUl li {
     display: inline;
     list-style-type: none;
     padding: 6px 15px;
@@ -375,6 +372,83 @@ ul li {
         background-color: #171C3C;justify-content: center;display: flex;align-items: center;flex-direction: column;height: auto; border-radius: 10px;
     }
 
+/* Right Carousel */
+#modal-vertical-carousel .vertical-up {
+    z-index: 999;
+    position: fixed;
+    margin: 0px;
+    color: #fff;
+    background: #6280FA;
+    position: fixed;
+    top: 61px;
+    right: 130px;
+    z-index: 999;
+    font-size: 27px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 40px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+/*     
+    z-index: 999; position: fixed; margin: 0px; color: #6280FA; background: #171c3c; position: relative; left: 73px; z-index: 999; font-size: 27px; width: 40px; height: 40px; text-align: center; line-height: 35px; border-radius: 40px; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; transition: all .3s ease-in-out; cursor: pointer;  */
+}
+
+#modal-vertical-carousel .vertical-down { 
+    z-index: 999;
+    position: fixed;
+    margin: 0px;
+    bottom: 230px;
+    color: #fff;
+    background: #6280FA;
+    position: fixed;
+    right: 132px;
+    z-index: 999;
+    font-size: 27px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 40px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.owl-nav .owl-prev{
+    width: 35px;
+    height: 35px;
+    border-radius: 60px;
+    font-size: 25px !important;
+    left: -17px;
+    top: 57px;
+    line-height: 4px !important;
+    background-color: #6280FA !important;
+    color: #fff !important;
+}
+
+.owl-nav .owl-next{
+    width: 35px;
+    height: 35px;
+    border-radius: 60px;
+    font-size: 25px !important;
+    right: -17px;
+    top: 57px;
+    line-height: 4px !important;
+    background-color: #6280FA !important;
+    color: #fff !important;
+}
+
+/* Right Carousel */
+
+
+
+
+
     .bottomExploreContainer{
         margin-left: 92px;
     }
@@ -396,9 +470,8 @@ ul li {
         font-weight: bold;
     }
     .bottomContaineritems{
-        padding: 4px;
         background-color: #171C3C;
-        height: 150px;
+        height: 170px;
         border-radius: 10px;
     }
 /* Modal CSS */
@@ -424,9 +497,9 @@ ul li {
     width: 100px;
 }
 
-hr{
+/* hr{
     border-top: 1px solid #fd7e14;
-}
+} */
 
 .owl-nav .owl-next{
     position: absolute;
@@ -489,76 +562,41 @@ hr{
     width: 6px;               /* width of the entire scrollbar */
 }
 
+/*--------------------------------------------------------------
+Footer
+--------------------------------------------------------------*/
+.main-color { color: #f05c42; }
 
-.footer {
-    margin-top: 100px;
-}
-
-.footerMenus {
-    padding-left: 0px;
-}
-
-.footerMenus li{
-    display: block;
-    padding: 0;
-}
-
-.footerMenus a {
-    color: #FEFEFF;
-}
-.socialLinks{
-    display: inline;
-    margin: 0;
-    padding: 0;
-}
-.socialLinks li {
-    padding: 0 9px 0 0;
-}
-.widget{
-    margin: 10px 0;
-}
-
-.header-nav{
-    text-decoration: none;
-    color:white;
-}
-
-.header-nav li {
-    background-color: #013d7d;
-}
-
-footer { padding-top: 40px;
-    /* position: relative;  */
-}
-
-/*---------------------------------------------------------------------
-  Loader
------------------------------------------------------------------------*/
-.loading {
-	z-index: 20;
-	position: absolute;
-	top: 0;
-	left:-5px;
-	width: 100%;
-	height: 100%;
-    background-color: rgba(0,0,0,0.4);
-}
-.loading-content {
-	position: absolute;
-	border: 16px solid #f3f3f3; /* Light grey */
-	border-top: 16px solid #3498db; /* Blue */
-	border-radius: 50%;
-	width: 50px;
-	height: 50px;
-	top: 50%;
-	left:50%;
-	animation: spin 2s linear infinite;
-	}
-
-	@keyframes spin {
-		0% { transform: rotate(0deg); }
-		100% { transform: rotate(360deg); }
-	}
+footer { padding-top: 40px; position: relative; }
+footer .iq-instagram:before { position: absolute; left: 0; top: 0; content: ""; background: rgba(23, 54, 58, 0); width: 100%; height: 100%; border-radius: 5px; }
+footer .iq-instagram:hover:before { background: rgba(23, 54, 58, 0.8); }
+footer .iq-instagram a { position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 0; }
+.iq-instagram:hover a { opacity: inherit; }
+.iq-instagram a:hover i { color: #f05c42 !important; }
+.instagram-box .row { margin: 0; }
+.instagram-box .col-lg-4.col-md-4.col-sm-4, .instagram-box .col-lg-4.col-md-6.col-sm-6 { padding: 0 15px 15px 0; }
+.iq-instagram img { border-radius: 5px; }
+footer .widget, footer .widget:last-child { margin-bottom: 0px; }
+footer .widget { background: transparent; padding: 0; }
+footer .widget .footer-title { margin-bottom: 15px; font-weight: 600; }
+footer .widget .footer-title a.rsswidget img { vertical-align: unset; }
+footer .widget ul.menu li .sub-menu { padding-left: 10px; }
+footer ul.menu { padding: 0; }
+footer ul.menu li { margin-bottom:15px; list-style-type: none; }
+.subAddressContainer{ padding: 0;}
+.subAddressContainer li{ list-style-type: none; padding: 0px; }
+.socialLinks a{ font-size: 16px; text-align: center; display: inline-block; width: 30px; height: 30px; line-height: 27px; border-radius: 50%;
+    border: 1px solid #6280FA; box-shadow: 0px 0px 1px 1px rgba(112, 141, 236, 0.7); opacity: 0.7; transition: 0.3s ease-in-out; }
+.socialLinks a:hover{ box-shadow: 0px 1px 3px 2px rgba(112, 141, 236, 0.7); opacity: 1; }
+.socialLinks{ margin: 0; padding: 0; }
+.socialLinks li { display: inline; padding: 0 9px 0 0; }
+.footerSubMenu ul{ padding: 0px; }
+.footerSubMenu ul li{ list-style-type: circle; display: inline; padding: 7px; margin: 0px; }
+.footerSubMenu ul li.addressMenuactive{ background-color: #013d7d; color: antiquewhite; border-radius: 10px; }
+.subAddressContainer{ display: none; }
+.bottomLine{ border: 1px solid white; margin: 0px; }
+.subAddressContainer li{ font-size: 15px; }
+.subAddressContainer hr{ border: 1px solid #6280fa; }
 
 /*---------------------------------------------------------------------
   Back to Top
@@ -678,6 +716,7 @@ Service Hover CSS
 
 /* For Mobiles */
 @media(max-width : 480px) and (min-width:320px){
+
     .navbar-brand{
         padding: 15px;
     }

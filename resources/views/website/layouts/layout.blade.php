@@ -26,6 +26,7 @@
       {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/> --}}
       <!-- AOS CSS Animation -->
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <link rel="stylesheet" href="{{ URL::asset('assets/css/magnific-popup.css') }}"/>
    </head>
    <body>
       {{-- <div class="mainBodyContainer">

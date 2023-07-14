@@ -35,10 +35,10 @@
                             Log in/Sign up &nbsp;<i class="fa fa-user-circle-o" style="font-size:20px" aria-hidden="true"></i>
                         </a>
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown-2" style="position: initial;">
+                        {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdown-2" style="position: initial;">
                             <a class="dropdown-item" href="#">Log in</a>
                             <a class="dropdown-item" href="#">Sign up</a>
-                        </div>
+                        </div> --}}
                     </li>
                 </ul>
             </div>
@@ -46,7 +46,7 @@
     </nav>
 
     <!-- Search Bar Start -->
-    <div class="container" id="top">
+    {{-- <div class="container" id="top">
         <form name="search-form" id="search-form" method="post" action="{{ url('search') }}">
             @csrf
             <div class="row row mb-0 searchDiv">
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </form>
-    </div>
+    </div> --}}
     <!-- Search Bar End -->
 
 </header>
